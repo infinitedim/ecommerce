@@ -1,10 +1,13 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import Miolica from "../assets/img/Logo_miolica.png";
+
 export default function Navbar() {
   return (
-    <nav>
+    <nav className="flex items-center justify-around flex-row p-5">
       <div className="brand">
-        <h1>IO</h1>
+        <LazyLoadImage src={Miolica} />
       </div>
-      <ul className="list-none d-flex">
+      <ul className="list-none flex justify-between flex-row">
         <li>Home</li>
         <li>About</li>
         <li>Shop</li>

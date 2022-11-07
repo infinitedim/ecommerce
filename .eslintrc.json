@@ -31,6 +31,7 @@
     "react/react-in-jsx-scope": "off",
     "no-alert": "error",
     "no-console": "off",
+    "import/no-extraneous-dependencies": "off",
     "prettier/prettier": [
       "error",
       {
