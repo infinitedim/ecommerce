@@ -21,7 +21,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "build:sass": "sass src/sass/index.sass:src/css/root.css --style compressed",
-    "build:tailwind": "tailwindcss build src/css/index.css -o src/css/tailwind.css"
+    "build:tailwind": "tailwindcss build src/css/index.css -o src/css/tailwind.css",
+    "build:db":"node --es-module-specifier-resolution=node ./server/src/create_db.js"
   },
   "browserslist": {
     "production": [
