@@ -1,10 +1,7 @@
-import Navbar from '../components/Navbar';
-
 export default function Signup() {
   return (
-    <>
-      <Navbar />
+    <div className="singup">
       <h1>Signup</h1>
-    </>
+    </div>
   );
 }

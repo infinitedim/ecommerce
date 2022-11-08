@@ -1,10 +1,7 @@
-import Navbar from "../components/Navbar";
-
 export default function History() {
   return (
-    <>
-      <Navbar />
+    <div className="history">
       <h1>History</h1>
-    </>
+    </div>
   );
 }
