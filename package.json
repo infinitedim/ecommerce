@@ -22,7 +22,8 @@
     "lint:fix": "eslint --fix .",
     "build:sass": "sass src/sass/index.sass:src/css/root.css --style compressed",
     "build:tailwind": "tailwindcss build src/css/index.css -o src/css/tailwind.css",
-    "build:db": "node --es-module-specifier-resolution=node "
+    "build:db": "node --es-module-specifier-resolution=node ./server/src/config/create_db.js",
+    "build:table": "node --es-module-specifier-resolution=node ./server/src/config/create_table.js"
   },
   "browserslist": {
     "production": [
@@ -46,6 +47,7 @@
     "jwt": "^0.2.0",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lazy-load-image-component": "^1.5.5",
