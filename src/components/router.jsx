@@ -1,14 +1,12 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable no-undef */
 /* eslint-disable no-self-compare */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { routes as AppRoutes } from "../app/routes-config";
-
-import useCursor from "../hooks/useCursor";
-
-import Navbar from "./Navbar";
 import NotFound from "../pages/NotFound";
+import Navbar from "./navbar/Navbar";
+import { routes as AppRoutes } from "../app/routes-config";
+import useCursor from "../hooks/useCursor";
 
 function Router() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,7 +71,7 @@ function Router() {
     setIsScrolled(false);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
