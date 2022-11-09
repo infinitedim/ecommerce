@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2022 at 04:21 AM
+-- Generation Time: Nov 09, 2022 at 09:01 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `buyer` (
   `id_Buyer` int(11) NOT NULL,
+  `id_Personal` int(11) DEFAULT NULL,
   `Username` varchar(255) DEFAULT NULL,
   `Password` varchar(255) DEFAULT NULL,
   `RealName` varchar(255) DEFAULT NULL
@@ -60,27 +61,17 @@ CREATE TABLE `category` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dummyimg`
---
-
-CREATE TABLE `dummyimg` (
-  `id` int(11) NOT NULL,
-  `text` varchar(255) DEFAULT NULL,
-  `img` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `personal_data`
 --
 
 CREATE TABLE `personal_data` (
   `id_Personal` int(11) NOT NULL,
+  `id_Wishlist` int(11) DEFAULT NULL,
+  `id_Cart` int(11) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `PersonalAddress` varchar(255) DEFAULT NULL,
-  `ProfilePicture` text DEFAULT NULL,
-  `Saldo` varchar(255) DEFAULT NULL,
+  `ProfilePicture` varchar(255) DEFAULT NULL,
+  `Balance` int(11) DEFAULT NULL,
   `Gender` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -92,11 +83,12 @@ CREATE TABLE `personal_data` (
 
 CREATE TABLE `product` (
   `id_Product` int(11) NOT NULL,
+  `id_Seller` int(11) DEFAULT NULL,
+  `id_Category` int(11) DEFAULT NULL,
   `ProductName` varchar(255) DEFAULT NULL,
   `DescrProduct` varchar(255) DEFAULT NULL,
-  `QuantityProduct` varchar(255) DEFAULT NULL,
   `UnitPrice` varchar(255) DEFAULT NULL,
-  `PictProduct` text DEFAULT NULL
+  `ProductPicture` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -107,19 +99,8 @@ CREATE TABLE `product` (
 
 CREATE TABLE `seller` (
   `id_Seller` int(11) NOT NULL,
+  `id_Personal` int(11) DEFAULT NULL,
   `ShopName` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `shipment`
---
-
-CREATE TABLE `shipment` (
-  `id_Shipment` int(11) NOT NULL,
-  `Locaiton` varchar(255) DEFAULT NULL,
-  `ShipCost` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -130,6 +111,8 @@ CREATE TABLE `shipment` (
 
 CREATE TABLE `shop` (
   `id_Shop` int(11) NOT NULL,
+  `id_Seller` int(11) DEFAULT NULL,
+  `id_Product` int(11) DEFAULT NULL,
   `DescrShop` varchar(255) DEFAULT NULL,
   `ShopPicture` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -152,7 +135,8 @@ CREATE TABLE `wishlist` (
 -- Indexes for table `buyer`
 --
 ALTER TABLE `buyer`
-  ADD PRIMARY KEY (`id_Buyer`);
+  ADD PRIMARY KEY (`id_Buyer`),
+  ADD KEY `FK_idPersonalBuyer` (`id_Personal`);
 
 --
 -- Indexes for table `cart`
@@ -167,40 +151,35 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id_Category`);
 
 --
--- Indexes for table `dummyimg`
---
-ALTER TABLE `dummyimg`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `personal_data`
 --
 ALTER TABLE `personal_data`
-  ADD PRIMARY KEY (`id_Personal`);
+  ADD PRIMARY KEY (`id_Personal`),
+  ADD KEY `FK_idCart` (`id_Cart`),
+  ADD KEY `FK_idWishlist` (`id_Wishlist`);
 
 --
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id_Product`);
+  ADD PRIMARY KEY (`id_Product`),
+  ADD KEY `FK_idCategory` (`id_Category`),
+  ADD KEY `FK_idSeller` (`id_Seller`);
 
 --
 -- Indexes for table `seller`
 --
 ALTER TABLE `seller`
-  ADD PRIMARY KEY (`id_Seller`);
-
---
--- Indexes for table `shipment`
---
-ALTER TABLE `shipment`
-  ADD PRIMARY KEY (`id_Shipment`);
+  ADD PRIMARY KEY (`id_Seller`),
+  ADD KEY `FK_idPersonal` (`id_Personal`);
 
 --
 -- Indexes for table `shop`
 --
 ALTER TABLE `shop`
-  ADD PRIMARY KEY (`id_Shop`);
+  ADD PRIMARY KEY (`id_Shop`),
+  ADD KEY `FK_idSellerShop` (`id_Seller`),
+  ADD KEY `FK_idProductShop` (`id_Product`);
 
 --
 -- Indexes for table `wishlist`
@@ -231,12 +210,6 @@ ALTER TABLE `category`
   MODIFY `id_Category` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `dummyimg`
---
-ALTER TABLE `dummyimg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `personal_data`
 --
 ALTER TABLE `personal_data`
@@ -255,12 +228,6 @@ ALTER TABLE `seller`
   MODIFY `id_Seller` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `shipment`
---
-ALTER TABLE `shipment`
-  MODIFY `id_Shipment` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
@@ -271,6 +238,43 @@ ALTER TABLE `shop`
 --
 ALTER TABLE `wishlist`
   MODIFY `id_Wishlist` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `buyer`
+--
+ALTER TABLE `buyer`
+  ADD CONSTRAINT `FK_idPersonalBuyer` FOREIGN KEY (`id_Personal`) REFERENCES `personal_data` (`id_Personal`);
+
+--
+-- Constraints for table `personal_data`
+--
+ALTER TABLE `personal_data`
+  ADD CONSTRAINT `FK_idCart` FOREIGN KEY (`id_Cart`) REFERENCES `cart` (`id_Cart`),
+  ADD CONSTRAINT `FK_idWishlist` FOREIGN KEY (`id_Wishlist`) REFERENCES `wishlist` (`id_Wishlist`);
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `FK_idCategory` FOREIGN KEY (`id_Category`) REFERENCES `category` (`id_Category`),
+  ADD CONSTRAINT `FK_idSeller` FOREIGN KEY (`id_Seller`) REFERENCES `seller` (`id_Seller`);
+
+--
+-- Constraints for table `seller`
+--
+ALTER TABLE `seller`
+  ADD CONSTRAINT `FK_idPersonal` FOREIGN KEY (`id_Personal`) REFERENCES `personal_data` (`id_Personal`);
+
+--
+-- Constraints for table `shop`
+--
+ALTER TABLE `shop`
+  ADD CONSTRAINT `FK_idProductShop` FOREIGN KEY (`id_Product`) REFERENCES `product` (`id_Product`),
+  ADD CONSTRAINT `FK_idSellerShop` FOREIGN KEY (`id_Seller`) REFERENCES `seller` (`id_Seller`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
