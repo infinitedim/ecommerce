@@ -1,10 +1,10 @@
 import database from './config_db'
 
-const sql = `CREATE TABLE dummyimg (
-                id INT NOT NULL AUTO_INCREMENT,
-                text VARCHAR(255),
-                img TEXT,
-                PRIMARY KEY(id)
+const sql = `CREATE TABLE shipment (
+                id_Shipment INT NOT NULL AUTO_INCREMENT,
+                Locaiton VARCHAR(255),
+                ShipCost TEXT,
+                PRIMARY KEY(id_Shipment)
             )`
 
 database.query(sql, err => {
