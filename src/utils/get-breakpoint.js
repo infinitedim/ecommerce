@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-export const getBreakpoint = () => {
+const getBreakpoint = () => {
   const breakpoints = [
     {
       name: "xs",
@@ -36,3 +36,5 @@ export const getBreakpoint = () => {
 
   return breakpoint ? breakpoint.name : "xl";
 };
+
+export default getBreakpoint;

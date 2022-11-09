@@ -4,7 +4,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "../pages/NotFound";
-import Navbar from "./Navbar";
+import Navbar from "./navbar/Navbar";
 import { routes as AppRoutes } from "../app/routes-config";
 import useCursor from "../hooks/useCursor";
 
