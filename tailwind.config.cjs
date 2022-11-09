@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
@@ -58,5 +59,8 @@ module.exports = {
       }),
     },
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
+  ],
 };
