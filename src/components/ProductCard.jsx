@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { ReactComponent as IconLove } from "../assets/ico/ic-heart.svg";
 
 export default function ProductCard({
-  isResponsive = false,
   isSkeleton = false,
   productName = "",
   productPrice = "",
@@ -40,7 +39,7 @@ export default function ProductCard({
         className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
       >
         <img
-          data-src={productImage}
+          src={productImage}
           alt={`Product${" "}Image`}
           className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"
         />
