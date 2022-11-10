@@ -14,6 +14,8 @@ const __dirname = path.dirname(__filename);
 
 app.use(cors());
 app.use(helmet());
+app.use(bodyParser.json());
+
 app.use(express.json());
 
 // UniqueSuffix sebagai randomizer
@@ -64,6 +66,9 @@ app.use(
   ]),
 );
 
+app.get("/", (req, res) => {
+  res.send("ok");
+});
 app.use("/api/v1", routes);
 
 export default app;
