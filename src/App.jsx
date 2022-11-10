@@ -1,19 +1,24 @@
-/* eslint-disable no-bitwise */
-/* eslint-disable no-undef */
-/* eslint-disable no-self-compare */
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NotFound from "../pages/NotFound";
-import Navbar from "./navbar/Navbar";
-import { routes as AppRoutes } from "../app/routes-config";
-import useCursor from "../hooks/useCursor";
+import useCursor from "./hooks/useCursor";
 
-function Router() {
+// Import Pages
+const Home = lazy(() => import("./pages/Home"));
+const Login = lazy(() => import("./pages/Signin"));
+const Register = lazy(() => import("./pages/Signup"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const NotFound = lazy(() => import("./pages/Shop"));
+const History = lazy(() => import("./pages/History"));
+const Shop = lazy(() => import("./pages/Shop"));
+
+// Import Components
+const Navbar = lazy(() => import("./components/navbar/Navbar"));
+
+function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showText, setShowText] = useState(null);
-
-  const { PublicRoutes } = AppRoutes;
-
   const cursorRef = useRef(null);
 
   const handleMouseEnter = () => {
@@ -88,23 +93,47 @@ function Router() {
       >
         <span className="absolute-center text-center">{showText || ""}</span>
       </div>
-
-      <Routes>
-        {PublicRoutes.flatMap((route) => (
+      <Suspense>
+        <Routes>
           <Route
-            key={route.path}
-            path={route.path}
-            element={<route.element />}
+            index
+            path="/"
+            element={<Home />}
           />
-        ))}
-
-        <Route
-          path="*"
-          element={<NotFound />}
-        />
-      </Routes>
+          <Route
+            exact
+            path="/login"
+            element={<Login />}
+          />
+          <Route
+            exact
+            path="/register"
+            element={<Register />}
+          />
+          <Route
+            path="/products"
+            element={<Shop />}
+          />
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
+          <Route
+            path="/wishlist"
+            element={<Wishlist />}
+          />
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
 
-export default Router;
+export default App;

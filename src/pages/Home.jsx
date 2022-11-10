@@ -17,7 +17,6 @@ import { ReactComponent as IconChevronRight } from "../assets/ico/ic-chevron-rig
 // import ProductCategoryImageForWomen from "./img/woman.png";
 
 export default function Home() {
-  const [isAuthed, setIsAuthed] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [sampleData, setSampleData] = useState([]);
   const ref = useRef(null);
@@ -87,7 +86,7 @@ export default function Home() {
       />
       <div
         id="appContainer"
-        className="bg-noise-pink relative z-0"
+        className="bg-noise-white relative z-0"
       >
         <div className="app-container relative flex max-h-[768px] min-h-screen flex-col items-center justify-center overflow-hidden md:h-screen md:min-h-[unset]">
           <Fade
@@ -108,10 +107,9 @@ export default function Home() {
             <button
               className="btn tooltip px-8"
               type="button"
-              onClick={() => setIsAuthed(false)}
             >
-              <span>Shop now</span>
-              <p className="tooltip-text-center">Shop now</p>
+              <span>Shop Now</span>
+              <p className="tooltip-text-center">Shop Now</p>
             </button>
           </Fade>
 
@@ -142,7 +140,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-noise-pink">
+      <div className="bg-noise-black">
         <div className="app-container flex min-h-screen items-center justify-center p-6 sm:min-h-[unset] sm:py-12 md:py-20">
           <Fade
             triggerOnce
@@ -186,7 +184,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-noise-white">
+      <div className="bg-noise-pink">
         <div className="app-container px-[0!important] md:py-8">
           <div className="flex flex-col items-center justify-start px-6 md:flex-row md:justify-between">
             <div className="my-6 mx-2 flex w-full flex-row items-center gap-6">
@@ -271,9 +269,7 @@ export default function Home() {
         <div className="app-container min-h-screen px-6 py-8 text-center md:min-h-[unset]">
           <h2 className="mx-auto max-w-[550px] font-syne text-4xl font-bold">
             all of{" "}
-            <span className="font-neue-machina font-normal">
-              our products
-            </span>{" "}
+            <span className="font-neue-machina font-normal">our products</span>{" "}
             are available for{" "}
             <span className="font-neue-machina font-normal">men</span> and{" "}
             <span className="font-neue-machina font-normal">women</span>
