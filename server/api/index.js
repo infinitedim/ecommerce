@@ -1,15 +1,22 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import bodyParser from "body-parser";
 import multer from "multer";
 import path from "path";
+import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import routes from "../src/routes/routes";
 
+dotenv.config();
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
+
+app.use(express.json());
 
 // UniqueSuffix sebagai randomizer
 const ImgStorage = multer.diskStorage({
@@ -62,5 +69,6 @@ app.use(
 app.get("/", (req, res) => {
   res.send("ok");
 });
+app.use("/api/v1", routes);
 
 export default app;
