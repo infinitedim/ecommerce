@@ -14,7 +14,6 @@ const __dirname = path.dirname(__filename);
 
 app.use(cors());
 app.use(helmet());
-app.use(bodyParser.json());
 
 app.use(express.json());
 

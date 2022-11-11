@@ -71,7 +71,7 @@ export default function Navbar({ isScrolled }) {
             type="button"
             className="tooltip flex items-center"
           >
-            <IconShoppingBag className="h-5 w-5 text-custom-black-900" />
+            <IconShoppingBag className="h-5 w-5 text-custom-white-900" />
             <p className="tooltip-text-left">Shopping bag</p>
           </button>
           <button
