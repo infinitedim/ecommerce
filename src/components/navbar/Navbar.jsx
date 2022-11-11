@@ -16,7 +16,7 @@ export default function Navbar({ isScrolled }) {
   const [isProfileMenuOpened, setIsProfileMenuOpened] = useState(false);
 
   const renderLogo = () => {
-    const logoClassName = "navbar-logo h-11 w-[auto] text-custom-black-900";
+    const logoClassName = "navbar-logo h-[auto] w-[auto] text-custom-black-900";
     if (
       getBreakpoint() === "xs" ||
       getBreakpoint() === "sm" ||
@@ -71,7 +71,7 @@ export default function Navbar({ isScrolled }) {
             type="button"
             className="tooltip flex items-center"
           >
-            <IconShoppingBag className="h-[auto] w-[auto] text-custom-white-900" />
+            <IconShoppingBag className="h-[auto] w-[auto] text-custom-black-900" />
             <p className="tooltip-text-left">Shopping bag</p>
           </button>
           <button
