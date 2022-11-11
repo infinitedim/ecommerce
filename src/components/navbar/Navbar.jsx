@@ -71,14 +71,14 @@ export default function Navbar({ isScrolled }) {
             type="button"
             className="tooltip flex items-center"
           >
-            <IconShoppingBag className="h-5 w-5 text-custom-white-900" />
+            <IconShoppingBag className="h-[auto] w-[auto] text-custom-white-900" />
             <p className="tooltip-text-left">Shopping bag</p>
           </button>
           <button
             type="button"
             className="tooltip flex items-center"
           >
-            <IconLove className="h-5 w-5 text-custom-black-900" />
+            <IconLove className="h-[auto] w-[auto] text-custom-black-900" />
             <p className="tooltip-text-center">Liked Product</p>
           </button>
           <button
@@ -86,7 +86,7 @@ export default function Navbar({ isScrolled }) {
             className="tooltip flex items-center"
             onClick={handleOpenProfileMenu}
           >
-            <IconUser className="h-5 w-5 text-custom-black-900" />
+            <IconUser className="h-[auto] w-[auto] text-custom-black-900" />
             <p className="tooltip-text">Profile</p>
           </button>
           {/* End Icons */}
