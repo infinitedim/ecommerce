@@ -11,16 +11,8 @@ export default function NavbarMenu({ state, onClose }) {
       href: "/",
     },
     {
-      title: "About",
-      href: "/about",
-    },
-    {
       title: "Shop",
-      href: "/shop",
-    },
-    {
-      title: "Contact",
-      href: "/contact",
+      href: "/products",
     },
   ];
 
