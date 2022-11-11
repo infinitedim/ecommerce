@@ -1,50 +1,139 @@
-// import React, { lazy, Suspense } from "react";
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Loading from "./pages/Loading";
+import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import useCursor from "./hooks/useCursor";
 
-// const Home = lazy(() => import("./pages/Home"));
-// const NotFound = lazy(() => import("./pages/NotFound"));
-// const Signin = lazy(() => import("./pages/Signin"));
-// const Signup = lazy(() => import("./pages/Signup"));
-// const Wishlist = lazy(() => import("./pages/Wishlist"));
-// const Shop = lazy(() => import("./pages/Shop"));
-// const Cart = lazy(() => import("./pages/Cart"));
+// Import Pages
+const Home = lazy(() => import("./pages/Home"));
+const Login = lazy(() => import("./pages/Signin"));
+const Register = lazy(() => import("./pages/Signup"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const NotFound = lazy(() => import("./pages/Shop"));
+const History = lazy(() => import("./pages/History"));
+const Shop = lazy(() => import("./pages/Shop"));
 
-// export default function App() {
-//   return (
-//     <BrowserRouter>
-//       <Suspense fallback={<Loading />}>
-//         <Routes>
-//           <Route
-//             path="/"
-//             element={<Home />}
-//           />
-//           <Route
-//             path="/signin"
-//             element={<Signin />}
-//           />
-//           <Route
-//             path="/signup"
-//             element={<Signup />}
-//           />
-//           <Route
-//             path="/shop"
-//             element={<Shop />}
-//           />
-//           <Route
-//             path="/cart"
-//             element={<Cart />}
-//           />
-//           <Route
-//             path="/wishlist"
-//             element={<Wishlist />}
-//           />
-//           <Route
-//             path="*"
-//             element={<NotFound />}
-//           />
-//         </Routes>
-//       </Suspense>
-//     </BrowserRouter>
-//   );
-// }
+// Import Components
+const Navbar = lazy(() => import("./components/navbar/Navbar"));
+
+function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [showText, setShowText] = useState(null);
+  const cursorRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    const onEnter = (text) => {
+      setShowText(text);
+      cursorRef.current?.style.setProperty("--w", "5rem");
+      cursorRef.current?.style.setProperty("--h", "5rem");
+      cursorRef.current?.classList.remove("mix-blend-difference");
+      cursorRef.current?.classList.add("hover");
+    };
+
+    const onLeave = () => {
+      setShowText(null);
+      cursorRef.current?.style.setProperty("--w", "1.5rem");
+      cursorRef.current?.style.setProperty("--h", "1.5rem");
+      cursorRef.current?.classList.add("mix-blend-difference");
+      cursorRef.current?.classList.remove("hover");
+    };
+
+    const links = document.querySelectorAll("a[href]:not(#product-card)");
+    const productCards = document.querySelectorAll("#product-card");
+    const buttons = document.querySelectorAll("button");
+
+    links?.forEach((item) => {
+      item.addEventListener("mouseenter", () => onEnter("Click link"));
+      item.addEventListener("mouseleave", onLeave);
+    });
+
+    productCards?.forEach((item) => {
+      item.addEventListener("mouseenter", () => onEnter("View Product"));
+      item.addEventListener("mouseleave", onLeave);
+    });
+
+    buttons?.forEach((item) => {
+      item.addEventListener("mouseenter", () =>
+        cursorRef.current?.style.setProperty("--scale", "0"),
+      );
+      item.addEventListener("mouseleave", () =>
+        cursorRef.current?.style.setProperty("--scale", "1"),
+      );
+    });
+  };
+
+  useCursor({
+    ref: cursorRef,
+    onMouseMove: handleMouseEnter,
+  });
+
+  const handleScroll = () => {
+    if (window.scrollY > 75) {
+      setIsScrolled(true);
+      return;
+    }
+
+    setIsScrolled(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <Navbar isScrolled={isScrolled} />
+      <div
+        className="custom-cursor opacity-0 mix-blend-difference"
+        ref={cursorRef}
+      >
+        <span className="absolute-center text-center">{showText || ""}</span>
+      </div>
+      <Suspense>
+        <Routes>
+          <Route
+            index
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            exact
+            path="/login"
+            element={<Login />}
+          />
+          <Route
+            exact
+            path="/register"
+            element={<Register />}
+          />
+          <Route
+            path="/products"
+            element={<Shop />}
+          />
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
+          <Route
+            path="/wishlist"
+            element={<Wishlist />}
+          />
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
+}
+
+export default App;
