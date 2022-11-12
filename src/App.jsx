@@ -87,7 +87,9 @@ function App() {
 
   return (
     <>
-      {location.pathname !== "/login" && <Navbar isScrolled={isScrolled} />}
+      {location.pathname !== "/login" && location.pathname !== "/register" && (
+        <Navbar isScrolled={isScrolled} />
+      )}
       <div
         className="custom-cursor opacity-0 mix-blend-difference"
         ref={cursorRef}
