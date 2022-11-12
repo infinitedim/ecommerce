@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import useCursor from "./hooks/useCursor";
 
 // Import Pages
@@ -17,6 +17,7 @@ const Shop = lazy(() => import("./pages/Shop"));
 const Navbar = lazy(() => import("./components/navbar/Navbar"));
 
 function App() {
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [showText, setShowText] = useState(null);
   const cursorRef = useRef(null);
@@ -85,8 +86,8 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Navbar isScrolled={isScrolled} />
+    <>
+      {location.pathname !== "/login" && <Navbar isScrolled={isScrolled} />}
       <div
         className="custom-cursor opacity-0 mix-blend-difference"
         ref={cursorRef}
@@ -127,12 +128,20 @@ function App() {
             element={<Cart />}
           />
           <Route
+            path="/checkout"
+            element={<Checkout />}
+          />
+          <Route
+            path="/history"
+            element={<History />}
+          />
+          <Route
             path="*"
             element={<NotFound />}
           />
         </Routes>
       </Suspense>
-    </BrowserRouter>
+    </>
   );
 }
 
