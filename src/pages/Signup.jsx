@@ -107,9 +107,10 @@ export default function Signup() {
           </label>
           <button
             type="submit"
-            className="m-5 bg-custom-black-900 px-10 py-5 text-custom-white-900 focus:border-2 focus:border-custom-black-900 focus:bg-transparent focus:px-[38px] focus:py-[18px] focus:text-custom-black-900"
+            className="btn tooltip m-5 px-8"
           >
-            Sign Up
+            <span>Sign up</span>
+            <p className="tooltip-text-center">Sign Up</p>
           </button>
           <p>
             Already have account?{" "}
