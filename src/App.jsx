@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import useCursor from "./hooks/useCursor";
+import Loading from "./pages/Loading";
 
 // Import Pages
 const Home = lazy(() => import("./pages/Home"));
@@ -15,6 +16,7 @@ const Shop = lazy(() => import("./pages/Shop"));
 
 // Import Components
 const Navbar = lazy(() => import("./components/navbar/Navbar"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   const location = useLocation();
@@ -87,16 +89,16 @@ function App() {
 
   return (
     <>
-      {location.pathname !== "/login" && location.pathname !== "/register" && (
-        <Navbar isScrolled={isScrolled} />
-      )}
+      {location.pathname !== "/login" &&
+        location.pathname !== "/register" &&
+        location.pathname !== "/loading" && <Navbar isScrolled={isScrolled} />}
       <div
         className="custom-cursor opacity-0 mix-blend-difference"
         ref={cursorRef}
       >
         <span className="absolute-center text-center">{showText || ""}</span>
       </div>
-      <Suspense>
+      <Suspense fallback={<Loading />}>
         <Routes>
           <Route
             path="/"
@@ -135,11 +137,18 @@ function App() {
             element={<History />}
           />
           <Route
+            path="/loading"
+            element={<Loading />}
+          />
+          <Route
             path="*"
             element={<NotFound />}
           />
         </Routes>
       </Suspense>
+      {location.pathname !== "/login" &&
+        location.pathname !== "/register" &&
+        location.pathname !== "/loading" && <Footer />}
     </>
   );
 }
