@@ -9,7 +9,7 @@ const Register = lazy(() => import("./pages/Signup"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Wishlist = lazy(() => import("./pages/Wishlist"));
 const Checkout = lazy(() => import("./pages/Checkout"));
-const NotFound = lazy(() => import("./pages/Shop"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 const History = lazy(() => import("./pages/History"));
 const Shop = lazy(() => import("./pages/Shop"));
 
@@ -99,17 +99,14 @@ function App() {
       <Suspense>
         <Routes>
           <Route
-            index
             path="/"
             element={<Home />}
           />
           <Route
-            exact
             path="/login"
             element={<Login />}
           />
           <Route
-            exact
             path="/register"
             element={<Register />}
           />

@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import { ReactComponent as User } from "../assets/ico/ic-user.svg";
-import { ReactComponent as Email } from "../assets/ico/ic-email.svg";
-import { ReactComponent as Lock } from "../assets/ico/ico-password.svg";
+import { ReactComponent as Email } from "../assets/ico/ic-mail.svg";
+import { ReactComponent as Lock } from "../assets/ico/ic-lock.svg";
 import { ReactComponent as Miolica } from "../assets/ico/Logo_full.svg";
 
 export default function Signup() {
