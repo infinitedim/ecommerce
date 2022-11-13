@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { ReactComponent as Miolica } from "../assets/ico/Logo_full.svg";
@@ -8,6 +9,26 @@ import { ReactComponent as Mail } from "../assets/ico/ic-mail.svg";
 import { ReactComponent as ArrowUp } from "../assets/ico/ic-arrow-up.svg";
 
 export default function Footer() {
+  const [setVisible] = useState(false);
+
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 300) {
+      setVisible(true);
+    } else if (scrolled <= 300) {
+      setVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  window.addEventListener("scroll", toggleVisible);
+
   return (
     <footer className="footer bg-noise-white p-5">
       <Fade
@@ -16,7 +37,7 @@ export default function Footer() {
         duration={1000}
       >
         <Miolica className="m-auto text-center" />
-        <div className="lists-top flex h-screen w-full flex-col items-start justify-between border-b-2 border-custom-black-900">
+        <div className="lists-top flex h-screen w-full flex-col items-start justify-between border-b-2 border-custom-black-900 md:h-full md:flex-row md:py-5">
           <ul className="pb-3">
             <li>
               <h1 className="font-bold">Explore Miolica</h1>
@@ -94,7 +115,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://gmail.com/">
+                  <a href="mailto:miolica@store.com">
                     <Mail />
                   </a>
                 </li>
@@ -102,7 +123,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="lists-bottom flex h-full flex-col pt-5">
+        <div className="lists-bottom flex h-full flex-col pt-5 text-custom-black-900">
           <ul>
             <li>Privacy policy</li>
             <li>Terms & Condition</li>
@@ -111,6 +132,7 @@ export default function Footer() {
           <button
             type="button"
             className="align-center m-auto flex w-2/5 items-center justify-center border-[3px] border-custom-black-900 px-4 py-5"
+            onClick={() => scrollToTop()}
           >
             <span className="text-custom-black-900">Back To Top</span>
             <p className="tooltip-text-center">Back To Top</p>
