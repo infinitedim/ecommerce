@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 const SessionStorage = {
   getValue(key) {

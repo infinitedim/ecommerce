@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-use-before-define */
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ReactComponent as Io } from "../../assets/ico/IO.svg";
 import { ReactComponent as Miolica } from "../../assets/ico/Logo_full.svg";
 import { ReactComponent as IconShoppingBag } from "../../assets/ico/ic-shopping-bag.svg";
@@ -13,7 +14,6 @@ import NavbarProfileMenu from "./NavbarProfileMenu";
 
 export default function Navbar({ isScrolled }) {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
-  const [isProfileMenuOpened, setIsProfileMenuOpened] = useState(false);
 
   const renderLogo = () => {
     const logoClassName = "navbar-logo h-[auto] w-[auto] text-custom-black-900";
@@ -37,8 +37,6 @@ export default function Navbar({ isScrolled }) {
   };
 
   const handleOpenMenu = () => {
-    if (isProfileMenuOpened) setIsProfileMenuOpened(false);
-
     if (getBreakpoint() === "xs" || getBreakpoint() === "sm") {
       setIsMenuOpened(!isMenuOpened);
       toggleBodyScroll(!isMenuOpened);
@@ -46,13 +44,6 @@ export default function Navbar({ isScrolled }) {
     }
 
     setIsMenuOpened(false);
-  };
-
-  const handleOpenProfileMenu = () => {
-    if (isMenuOpened) setIsMenuOpened(false);
-
-    setIsProfileMenuOpened(!isProfileMenuOpened);
-    toggleBodyScroll(!isProfileMenuOpened);
   };
 
   return (
@@ -71,32 +62,37 @@ export default function Navbar({ isScrolled }) {
             type="button"
             className="tooltip flex items-center"
           >
-            <IconShoppingBag
-              className="h-[auto] w-[auto]"
-              stroke="text-custom-black-900"
-            />
-            <p className="tooltip-text-left">Shopping bag</p>
+            <Link to="/cart">
+              <IconShoppingBag
+                className="h-[auto] w-[auto]"
+                stroke="text-custom-black-900"
+              />
+              <p className="tooltip-text-left">Shopping bag</p>
+            </Link>
           </button>
           <button
             type="button"
             className="tooltip flex items-center"
           >
-            <IconLove
-              className="h-[auto] w-[auto]"
-              stroke="text-custom-white-900"
-            />
-            <p className="tooltip-text-center">Liked Product</p>
+            <Link to="/wishlist">
+              <IconLove
+                className="h-[auto] w-[auto]"
+                stroke="text-custom-white-900"
+              />
+              <p className="tooltip-text-center">Liked Product</p>
+            </Link>
           </button>
           <button
             type="button"
             className="tooltip flex items-center"
-            onClick={handleOpenProfileMenu}
           >
-            <IconUser
-              className="h-[auto] w-[auto]"
-              stroke="text-custom-white-900"
-            />
-            <p className="tooltip-text">Profile</p>
+            <Link to="/users/">
+              <IconUser
+                className="h-[auto] w-[auto]"
+                stroke="text-custom-white-900"
+              />
+              <p className="tooltip-text">Profile</p>
+            </Link>
           </button>
           {/* End Icons */}
 
@@ -113,10 +109,7 @@ export default function Navbar({ isScrolled }) {
           </button>
         </div>
 
-        <NavbarProfileMenu
-          isProfileMenuOpened={isProfileMenuOpened}
-          onClose={handleOpenProfileMenu}
-        />
+        <NavbarProfileMenu />
       </div>
     </nav>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
@@ -9,7 +10,7 @@ import { ReactComponent as Mail } from "../assets/ico/ic-mail.svg";
 import { ReactComponent as ArrowUp } from "../assets/ico/ic-arrow-up.svg";
 
 export default function Footer() {
-  const [setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -30,7 +31,7 @@ export default function Footer() {
   window.addEventListener("scroll", toggleVisible);
 
   return (
-    <footer className="footer bg-noise-white p-5">
+    <footer className="footer bg-noise-pink p-5">
       <Fade
         cascade
         triggerOnce
