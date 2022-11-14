@@ -5,6 +5,8 @@ import { useRef, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import axios from "axios";
 import LoadingBar from "react-top-loading-bar";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 import useSlider from "../hooks/useSlider";
 import ProductCard from "../components/ProductCard";
 import HeroImage1 from "../assets/img/hero_1.jpg";
@@ -12,9 +14,9 @@ import HeroImage2 from "../assets/img/hero_2.jpg";
 import HeroImage3 from "../assets/img/hero_3.jpg";
 import { ReactComponent as IconChevronLeft } from "../assets/ico/ic-chevron-left.svg";
 import { ReactComponent as IconChevronRight } from "../assets/ico/ic-chevron-right.svg";
-// import ExampleProductImage from "./img/hat.png";
-// import ProductCategoryImageForMen from "./img/man.png";
-// import ProductCategoryImageForWomen from "./img/woman.png";
+import ExampleProductImage from "../assets/img/hat.png";
+import ProductCategoryImageForMen from "../assets/img/man.png";
+import ProductCategoryImageForWomen from "../assets/img/woman.png";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,15 +35,15 @@ export default function Home() {
   const handleScroll = () => {
     if (window.scrollY >= 500) return;
 
-    HeroImage1Ref?.current?.style.setProperty(
+    HeroImage1Ref?.current?.style?.setProperty(
       "--translate-y",
       `${window.scrollY / 4}px`,
     );
-    HeroImage2Ref?.current?.style.setProperty(
+    HeroImage2Ref?.current?.style?.setProperty(
       "--translate-y",
       `${window.scrollY / 3.5}px`,
     );
-    HeroImage3Ref?.current?.style.setProperty(
+    HeroImage3Ref?.current?.style?.setProperty(
       "--translate-y",
       `${window.scrollY / 5}px`,
     );
@@ -95,12 +97,12 @@ export default function Home() {
             duration={1000}
             direction="up"
           >
-            <h1 className="mb-4 text-4xl text-custom-black-900 md:text-5xl lg:text-7xl">
-              <span className="font-syne font-semibold">Wear</span>{" "}
+            <h1 className="mb-4 w-full text-4xl text-custom-black-900 md:text-5xl lg:text-7xl">
+              <span className="font-syne text-6xl font-semibold">Wear</span>{" "}
               <span className="font-neue-machina">Looks</span>
               ,
               <br />
-              <span className="font-syne font-semibold">Not</span>{" "}
+              <span className="font-syne text-6xl font-semibold">Not</span>{" "}
               <span className="font-neue-machina">Outfits</span>.
             </h1>
 
@@ -274,6 +276,49 @@ export default function Home() {
             <span className="font-neue-machina font-normal">men</span> and{" "}
             <span className="font-neue-machina font-normal">women</span>
           </h2>
+
+          <div className="image-container relative mt-32 flex h-[70vh] w-4/5 justify-around">
+            <div className="women">
+              <LazyLoadImage
+                src={ProductCategoryImageForWomen}
+                alt="Category women"
+                className="img-animation-load hero-image absolute left-[20rem] h-[350px] rotate-[5deg]"
+              />
+              <LazyLoadImage
+                src={ProductCategoryImageForWomen}
+                alt="Category women"
+                className="img-animation-load hero-image absolute z-10 h-[350px]"
+              />
+              <LazyLoadImage
+                src={ProductCategoryImageForWomen}
+                alt="Category women"
+                className="img-animation-load hero-image absolute left-[10rem] h-[350px] -rotate-[5deg]"
+              />
+            </div>
+            <div className="men">
+              <LazyLoadImage
+                src={ProductCategoryImageForMen}
+                alt="Category men"
+                className="img-animation-load hero-image absolute -right-3 h-[350px] rotate-[5deg]"
+              />
+              <LazyLoadImage
+                src={ProductCategoryImageForMen}
+                alt="Category men"
+                className="img-animation-load hero-image absolute z-10 h-[350px]"
+              />
+              <LazyLoadImage
+                src={ProductCategoryImageForMen}
+                alt="Category men"
+                className="img-animation-load hero-image absolute right-[8rem] h-[350px] -rotate-[5deg]"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="bg-custom-white-900 px-5 py-3 text-custom-black-900"
+          >
+            <Link to="/products">See all products</Link>
+          </button>
         </div>
       </div>
     </>

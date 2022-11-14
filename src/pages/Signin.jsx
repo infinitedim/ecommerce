@@ -1,111 +1,103 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import LoadingBar from "react-top-loading-bar";
-import { ReactComponent as IconFormEmail } from "../assets/ico/ic-email.svg";
-import { ReactComponent as IconFormLock } from "../assets/ico/ico-password.svg";
+import { Fade } from "react-awesome-reveal";
+import { ReactComponent as IconFormEmail } from "../assets/ico/ic-mail.svg";
+import { ReactComponent as IconFormLock } from "../assets/ico/ic-lock.svg";
+import { ReactComponent as Miolica } from "../assets/ico/Logo_full.svg";
+import { ReactComponent as IconShown } from "../assets/ico/ic-eye-shown.svg";
 
 export default function Signin() {
-  const ref = useRef(null);
-
+  const [passwordShown, setpasswordShown] = useState(false);
+  const togglePasswordVisibility = () => {
+    setpasswordShown(!passwordShown);
+  };
+  function funcLog() {
+    console.log("hello");
+  }
   return (
-    <>
-      <LoadingBar
-        color="#0a0c0f"
-        height={5}
-        shadowStyle={{
-          boxShadow: "0 0 1rem #0a0c0f",
-        }}
-        ref={ref}
-      />
-
-      <div
-        id="appContainer"
-        className="bg-noise-white"
+    <div className="bg-noise-white h-screen overflow-y-hidden">
+      <Fade
+        cascade
+        triggerOnce
+        duration={1500}
       >
-        <div>
-          <div className="app-container h-screen">
-            <form className="m-[auto] w-full max-w-sm">
-              <div className="font-norma mb-6 flex items-center border-b-2 border-custom-black-700 py-2 font-neue-machina">
-                <IconFormEmail className="h-6 w-6" />
-
-                <input
-                  id="InputUsername"
-                  type="text"
-                  placeholder="Email Address"
-                  className="mr-9 w-full appearance-none bg-transparent py-0.5 px-2 leading-tight text-custom-black-700 focus:outline-none"
-                  required
-                />
-              </div>
-
-              <div className="font-norma mb-6 flex items-center border-b-2 border-custom-black-700 py-2 font-neue-machina">
-                <IconFormLock className="h-6 w-6" />
-
-                <input
-                  id="InputPassword"
-                  type="password"
-                  placeholder="Password"
-                  className="mr-9 w-full appearance-none bg-transparent py-0.5 px-2 leading-tight text-custom-black-700 focus:outline-none"
-                  required
-                />
-              </div>
-            </form>
-            {/* <div className="app-container">
-              <div className="bg-noise-black box-border h-12 w-60">
-                <div className="flex justify-center">
-                  <span className="text-custom-white-900">Login</span>
-                </div>
-              </div>
-            </div> */}
-            <div className="flex justify-center">
-              <span>Forgot Password?</span>
-            </div>
-            <div className="app-container flex justify-center">
-              <button
-                type="button"
-                className="bg-noise-black h-18 box-border flex w-60 justify-center py-3 text-custom-white-700"
-              >
-                Forgot Password
-              </button>
-            </div>
-            <div className="app-container flex justify-center">
-              <button
-                type="button"
-                className="bg-noise-black h-18 my-5 box-border flex w-60 items-center justify-center py-3 text-custom-white-700"
-              >
-                Login
-              </button>
-            </div>
-            <div className="flex flex-col tracking-normal">
-              <div className="flex justify-center">
-                Dont have an account?{" "}
-                <Link
-                  to="/Home"
-                  id="Forget Password"
-                >
-                  <span className="font-bold underline">Sign up Here</span>
-                </Link>
-              </div>
-              <div className="flex justify-center">
-                Need help?{" "}
-                <Link
-                  to="/Home"
-                  id="Forget Password"
-                >
-                  <span className="font-bold underline">Help Center</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="app-container flex justify-center">
-          <button
-            type="button"
-            className="bg-noise-black h-18 box-border flex w-60 items-center justify-center py-3 text-custom-white-700"
-          >
+        <Miolica className="m-auto mb-0 mt-10 h-[auto] w-[auto]" />
+        <form
+          action=""
+          className="form-group inset-0 flex w-[auto] flex-col items-center justify-evenly bg-transparent p-5"
+          onSubmit={(e) => {
+            e.preventDefault();
+            funcLog();
+          }}
+        >
+          <h1 className="my-6 self-center text-2xl font-semibold text-custom-black-700">
             Login
+          </h1>
+          <label
+            htmlFor="Email"
+            className="mb-2 flex w-1/4 items-center justify-start border-b-2 border-custom-black-900"
+          >
+            <IconFormEmail className="mr-5 h-6 w-6 text-custom-black-900" />
+
+            <input
+              type="text"
+              placeholder="Email Address"
+              id="email"
+              className="border-none bg-transparent focus:ring-0"
+            />
+          </label>
+          <label
+            htmlFor="Password"
+            className="mb-2 flex w-1/4 items-center justify-start border-b-2 border-custom-black-900"
+          >
+            <IconFormLock className="mr-5 h-6 w-6 text-custom-black-900" />
+            <input
+              type={passwordShown ? "text" : "password"}
+              placeholder="Password"
+              id="email"
+              className="border-none bg-transparent focus:ring-0"
+            />
+            <IconShown
+              onClick={togglePasswordVisibility}
+              className="h-6 w-6 text-custom-black-900"
+            />
+          </label>
+          <p>
+            <Link
+              to="/Home"
+              id="Forget Password"
+            >
+              Forgot password
+            </Link>
+          </p>
+          <button
+            type="submit"
+            className="btn tooltip m-5 w-1/4 px-8"
+          >
+            <span>Login</span>
+            <p className="tooltip-text-center">Login</p>
           </button>
-        </div>
-      </div>
-    </>
+
+          <p>
+            Dont have an account?{" "}
+            <Link
+              to="/register"
+              id="Register"
+            >
+              <span className="font-bold">Sign Up Here</span>
+            </Link>
+          </p>
+          <p>
+            Need help?{" "}
+            <Link
+              to="/Home"
+              id="Help Center"
+            >
+              <span className="font-bold"> Help Center</span>
+            </Link>
+          </p>
+        </form>
+      </Fade>
+    </div>
   );
 }
