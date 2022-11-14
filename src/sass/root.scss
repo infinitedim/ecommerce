@@ -30,6 +30,24 @@
     url('../fonts/NeueMachina-Ultrabold.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'Syne';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Syne'), local('Syne'),
+    url('../fonts/Syne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Syne';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: local('Syne'), local('Syne'),
+    url('../fonts/Syne-UltraBold.ttf') format('truetype');
+}
+
 .custom-cursor {
   --x: 50%;
   --y: 50%;
