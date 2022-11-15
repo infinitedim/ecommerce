@@ -12,7 +12,8 @@ const Wishlist = lazy(() => import("./pages/Wishlist"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const History = lazy(() => import("./pages/History"));
-const Shop = lazy(() => import("./pages/Shop"));
+const Shop = lazy(() => import("./pages/Products"));
+const Profile = lazy(() => import("./pages/Profile"));
 
 // Import Components
 const Navbar = lazy(() => import("./components/navbar/Navbar"));
@@ -109,6 +110,10 @@ function App() {
             element={<Login />}
           />
           <Route
+            path="/profile"
+            element={<Profile />}
+          />
+          <Route
             path="/register"
             element={<Register />}
           />
@@ -135,10 +140,6 @@ function App() {
           <Route
             path="/history"
             element={<History />}
-          />
-          <Route
-            path="/loading"
-            element={<Loading />}
           />
           <Route
             path="*"

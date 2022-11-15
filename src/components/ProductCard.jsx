@@ -3,6 +3,7 @@
 /* eslint-disable max-len */
 /* eslint-disable react/require-default-props */
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import { ReactComponent as IconLove } from "../assets/ico/ic-heart.svg";
 
@@ -38,7 +39,7 @@ export default function ProductCard({
         id="product-card"
         className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
       >
-        <img
+        <LazyLoadImage
           src={productImage}
           alt={`Product${" "}Image`}
           className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"
@@ -49,7 +50,7 @@ export default function ProductCard({
         className="max-w-250 flex flex-row items-center justify-between gap-4 py-6"
       >
         <Link
-          to="/product/asdasd123asd"
+          to="/products/asdasd123asd"
           id="product-card"
         >
           <h3 className="text-base font-semibold text-custom-black-900 line-clamp-1">

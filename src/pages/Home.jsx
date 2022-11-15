@@ -250,7 +250,7 @@ export default function Home() {
                   <ProductCard isSkeleton />
                 </>
               )}
-
+              {/* FAFCFF */}
               {!isLoading &&
                 sampleData.flatMap((item) => (
                   <ProductCard
@@ -292,7 +292,7 @@ export default function Home() {
               <LazyLoadImage
                 src={ProductCategoryImageForWomen}
                 alt="Category women"
-                className="img-animation-load hero-image absolute left-[10rem] h-[350px] -rotate-[5deg]"
+                className="img-animation-load hero-image absolute left-[13rem] h-[350px] -rotate-[5deg]"
               />
             </div>
             <div className="men">
