@@ -4,16 +4,17 @@ import useCursor from "./hooks/useCursor";
 import Loading from "./pages/Loading";
 
 // Import Pages
+const Cart = lazy(() => import("./pages/Cart"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const History = lazy(() => import("./pages/History"));
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Signin"));
-const Register = lazy(() => import("./pages/Signup"));
-const Cart = lazy(() => import("./pages/Cart"));
-const Wishlist = lazy(() => import("./pages/Wishlist"));
-const Checkout = lazy(() => import("./pages/Checkout"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const History = lazy(() => import("./pages/History"));
-const Shop = lazy(() => import("./pages/Products"));
+const Products = lazy(() => import("./pages/Products"));
+const Product = lazy(() => import("./pages/Product"));
 const Profile = lazy(() => import("./pages/Profile"));
+const Register = lazy(() => import("./pages/Signup"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
 
 // Import Components
 const Navbar = lazy(() => import("./components/navbar/Navbar"));
@@ -117,10 +118,16 @@ function App() {
             path="/register"
             element={<Register />}
           />
-          <Route
-            path="/products"
-            element={<Shop />}
-          />
+          <Route path="products">
+            <Route
+              index
+              element={<Products />}
+            />
+            <Route
+              path=":id"
+              element={<Product />}
+            />
+          </Route>
           <Route
             path="/cart"
             element={<Cart />}

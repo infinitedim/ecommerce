@@ -61,12 +61,9 @@ export default function Home() {
     const fetchData = async () => {
       ref?.current?.continuousStart();
 
-      const response = await axios(
-        "https://random-data-api.com/api/restaurant/random_restaurant?size=15",
-        {
-          setTimeout: 2500,
-        },
-      );
+      const response = await axios("https://fakestoreapi.com/products", {
+        setTimeout: 2500,
+      });
 
       setSampleData(response.data);
       ref?.current?.complete();
@@ -255,11 +252,9 @@ export default function Home() {
                 sampleData.flatMap((item) => (
                   <ProductCard
                     key={item.id}
-                    productName={item.name}
-                    productPrice={213.08}
-                    productImage={`https://picsum.photos/id/${Math.floor(
-                      Math.random() * 100,
-                    )}/200/300`}
+                    productName={item.title}
+                    productPrice={item.price}
+                    productImage={item.image}
                   />
                 ))}
             </div>

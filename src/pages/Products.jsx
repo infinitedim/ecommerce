@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 
-export default function Shop() {
+export default function Products() {
   const [isLoading, setIsLoading] = useState(true);
   const [sampleData, setSampleData] = useState([]);
   const ref = useRef(null);
@@ -11,9 +11,9 @@ export default function Shop() {
     const fetchData = async () => {
       ref?.current?.continuousStart();
 
-      const response = await axios(
-        "https://random-data-api.com/api/restaurant/random_restaurant?size=15",
-      );
+      const response = await axios("https://fakestoreapi.com/products", {
+        setTimeout: 2500,
+      });
 
       setSampleData(response.data);
       ref?.current?.complete();
@@ -27,7 +27,7 @@ export default function Shop() {
     <div className="products flex flex-col items-center">
       <h1 className="m-auto mt-40 font-syne text-3xl">All Products</h1>
 
-      <div className="products-container flex flex-col md:w-[90%] md:flex-row md:flex-wrap md:items-center md:justify-around">
+      <div className="products-container grid w-4/5 grid-cols-4 grid-rows-4">
         {isLoading && (
           <>
             <ProductCard isSkeleton />
@@ -44,11 +44,9 @@ export default function Shop() {
           sampleData.flatMap((item) => (
             <ProductCard
               key={item.id}
-              productName={item.name}
-              productPrice={213.08}
-              productImage={`https://picsum.photos/id/${Math.floor(
-                Math.random() * 100,
-              )}/200/300`}
+              productName={item.title}
+              productPrice={item.price}
+              productImage={item.image}
             />
           ))}
       </div>

@@ -35,7 +35,7 @@ export default function ProductCard({
   return (
     <div className="min-w-[250px] p-4">
       <Link
-        to="/product/asdasd123asd"
+        to={`${productName}`}
         id="product-card"
         className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
       >
@@ -50,7 +50,7 @@ export default function ProductCard({
         className="max-w-250 flex flex-row items-center justify-between gap-4 py-6"
       >
         <Link
-          to="/products/asdasd123asd"
+          to={`${productName}`}
           id="product-card"
         >
           <h3 className="text-base font-semibold text-custom-black-900 line-clamp-1">

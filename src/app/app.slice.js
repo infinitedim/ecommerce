@@ -1,23 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const AppSlice = createSlice({
-  name: "app",
-  initialState: {
-    count: 0,
-  },
+const initialState = {
+  user: null,
+};
+
+export const userSlice = createSlice({
+  initialState,
+  name: "userSlice",
   reducers: {
-    increment: (state) => {
-      state.count += 1;
-    },
-    decrement: (state) => {
-      state.count -= 1;
-    },
-    reset: (state) => {
-      state.count = 0;
+    logout: () => initialState,
+    setUser: (state, action) => {
+      state.user = action.payload;
     },
   },
 });
 
-export const { increment, decrement, reset } = AppSlice.actions;
+export default userSlice.reducer;
 
-export default AppSlice;
+export const { logout, setUser } = userSlice.actions;
