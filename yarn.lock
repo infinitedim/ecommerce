@@ -2696,6 +2696,14 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
 
+express-validator@^6.14.2:
+  version "6.14.2"
+  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.14.2.tgz#6147893f7bec0e14162c3a88b3653121afc4678f"
+  integrity sha512-8XfAUrQ6Y7dIIuy9KcUPCfG/uCbvREctrxf5EeeME+ulanJ4iiW71lWmm9r4YcKKYOCBMan0WpVg7FtHu4Z4Wg==
+  dependencies:
+    lodash "^4.17.21"
+    validator "^13.7.0"
+
 express@^4.18.2:
   version "4.18.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.18.2.tgz#3fabe08296e930c796c19e3c516979386ba9fd59"
@@ -3368,6 +3376,11 @@ jws@^3.2.2:
   dependencies:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
+
+jwt-decode@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
+  integrity sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
 
 language-subtag-registry@~0.3.2:
   version "0.3.22"
