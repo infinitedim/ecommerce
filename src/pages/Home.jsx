@@ -61,12 +61,9 @@ export default function Home() {
     const fetchData = async () => {
       ref?.current?.continuousStart();
 
-      const response = await axios(
-        "https://random-data-api.com/api/restaurant/random_restaurant?size=15",
-        {
-          setTimeout: 2500,
-        },
-      );
+      const response = await axios("https://fakestoreapi.com/products", {
+        setTimeout: 2500,
+      });
 
       setSampleData(response.data);
       ref?.current?.complete();
@@ -250,16 +247,14 @@ export default function Home() {
                   <ProductCard isSkeleton />
                 </>
               )}
-
+              {/* FAFCFF */}
               {!isLoading &&
                 sampleData.flatMap((item) => (
                   <ProductCard
                     key={item.id}
-                    productName={item.name}
-                    productPrice={213.08}
-                    productImage={`https://picsum.photos/id/${Math.floor(
-                      Math.random() * 100,
-                    )}/200/300`}
+                    productName={item.title}
+                    productPrice={item.price}
+                    productImage={item.image}
                   />
                 ))}
             </div>
@@ -292,7 +287,7 @@ export default function Home() {
               <LazyLoadImage
                 src={ProductCategoryImageForWomen}
                 alt="Category women"
-                className="img-animation-load hero-image absolute left-[10rem] h-[350px] -rotate-[5deg]"
+                className="img-animation-load hero-image absolute left-[13rem] h-[350px] -rotate-[5deg]"
               />
             </div>
             <div className="men">

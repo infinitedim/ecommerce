@@ -48,18 +48,18 @@ export default function Signin() {
           </label>
           <label
             htmlFor="Password"
-            className="mb-2 flex w-1/4 items-center justify-start border-b-2 border-custom-black-900"
+            className="mb-2 flex w-1/4 items-center justify-between border-b-2 border-custom-black-900"
           >
             <IconFormLock className="mr-5 h-6 w-6 text-custom-black-900" />
             <input
               type={passwordShown ? "text" : "password"}
               placeholder="Password"
               id="email"
-              className="border-none bg-transparent focus:ring-0"
+              className="self-start border-none bg-transparent focus:ring-0"
             />
             <IconShown
               onClick={togglePasswordVisibility}
-              className="h-6 w-6 text-custom-black-900"
+              className="h-6 w-6 self-end text-custom-black-900"
             />
           </label>
           <p>
@@ -90,7 +90,7 @@ export default function Signin() {
           <p>
             Need help?{" "}
             <Link
-              to="/Home"
+              to="/services"
               id="Help Center"
             >
               <span className="font-bold"> Help Center</span>
