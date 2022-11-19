@@ -4,7 +4,7 @@
 /* eslint-disable react/require-default-props */
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as IconLove } from "../assets/ico/ic-heart.svg";
 
 export default function ProductCard({
@@ -13,6 +13,60 @@ export default function ProductCard({
   productPrice = "",
   productImage = "",
 }) {
+  const location = useLocation();
+
+  const renderLinkImage = () => {
+    return location.pathname === "/" ? (
+      <Link
+        to={`products/${productName}`}
+        id="product-card"
+        className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
+      >
+        <LazyLoadImage
+          src={productImage}
+          alt={`Product${" "}Image`}
+          className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"
+        />
+      </Link>
+    ) : (
+      <Link
+        to={`${productName}`}
+        id="product-card"
+        className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
+      >
+        <LazyLoadImage
+          src={productImage}
+          alt={`Product${" "}Image`}
+          className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"
+        />
+      </Link>
+    );
+  };
+
+  const renderLinkText = () => {
+    return location.pathname === "/" ? (
+      <Link
+        to={`products/${productName}`}
+        id="product-card"
+      >
+        <h3 className="text-base font-semibold text-custom-black-900 line-clamp-1">
+          {productName}
+        </h3>
+        <span className="text-xs line-clamp-1">$ {productPrice}</span>
+      </Link>
+    ) : (
+      <Link
+        to={`${productName}`}
+        id="product-card"
+      >
+        <h3 className="text-base font-semibold text-custom-black-900 line-clamp-1">
+          {productName}
+        </h3>
+        <span className="text-xs line-clamp-1">$ {productPrice}</span>
+      </Link>
+    );
+  };
+
   // Skeleton for product card
   if (isSkeleton) {
     return (
@@ -34,30 +88,12 @@ export default function ProductCard({
 
   return (
     <div className="min-w-[250px] p-4">
-      <Link
-        to={`${productName}`}
-        id="product-card"
-        className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
-      >
-        <LazyLoadImage
-          src={productImage}
-          alt={`Product${" "}Image`}
-          className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"
-        />
-      </Link>
+      {renderLinkImage()}
       <div
         id="product-card-detail"
         className="max-w-250 flex flex-row items-center justify-between gap-4 py-6"
       >
-        <Link
-          to={`${productName}`}
-          id="product-card"
-        >
-          <h3 className="text-base font-semibold text-custom-black-900 line-clamp-1">
-            {productName}
-          </h3>
-          <span className="text-xs line-clamp-1">$ {productPrice}</span>
-        </Link>
+        {renderLinkText()}
         <button
           className="btn-default tooltip group border-0 hover:text-custom-black-900"
           type="button"
