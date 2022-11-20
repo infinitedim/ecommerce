@@ -103,13 +103,15 @@ export default function Home() {
               <span className="font-neue-machina">Outfits</span>.
             </h1>
 
-            <button
-              className="btn tooltip px-8"
-              type="button"
-            >
-              <span>Shop Now</span>
-              <p className="tooltip-text-center">Shop Now</p>
-            </button>
+            <Link to="/products">
+              <button
+                className="btn tooltip px-8"
+                type="button"
+              >
+                <span>Shop Now</span>
+                <p className="tooltip-text-center">Shop Now</p>
+              </button>
+            </Link>
           </Fade>
 
           <img
