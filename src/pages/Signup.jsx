@@ -1,16 +1,15 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
+import axios from "axios";
 import { ReactComponent as User } from "../assets/ico/ic-user.svg";
 import { ReactComponent as Email } from "../assets/ico/ic-mail.svg";
 import { ReactComponent as Lock } from "../assets/ico/ic-lock.svg";
 import { ReactComponent as Miolica } from "../assets/ico/Logo_full.svg";
 
 export default function Signup() {
-  function funcLog() {
-    console.log("hello");
-  }
-
   return (
     <div className="signup bg-noise-white h-screen overflow-y-hidden">
       <Fade
@@ -24,7 +23,6 @@ export default function Signup() {
           className="form-group top-0 bottom-0 right-0 left-0 flex h-[85vh] w-[auto] flex-col items-center justify-evenly bg-transparent p-5"
           onSubmit={(e) => {
             e.preventDefault();
-            funcLog();
           }}
         >
           <h1 className="self-center text-2xl font-semibold text-custom-black-700">
