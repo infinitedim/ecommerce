@@ -7,7 +7,6 @@ import reportWebVitals from "./reportWebVitals";
 import { store } from "./app/store";
 import App from "./App";
 import "./sass/root.scss";
-// import "./css/index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

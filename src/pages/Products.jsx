@@ -44,6 +44,7 @@ export default function Products() {
           sampleData.flatMap((item) => (
             <ProductCard
               key={item.id}
+              id={item.id}
               productName={item.title}
               productPrice={item.price}
               productImage={item.image}
