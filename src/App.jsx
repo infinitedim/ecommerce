@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import useCursor from "./hooks/useCursor";
@@ -15,6 +16,10 @@ const Product = lazy(() => import("./pages/Product"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Register = lazy(() => import("./pages/Signup"));
 const Wishlist = lazy(() => import("./pages/Wishlist"));
+const AccountSettings = lazy(() => import("./pages/AccountSettings"));
+const Balance = lazy(() => import("./pages/Balance"));
+const PersonalData = lazy(() => import("./pages/PersonalData"));
+const ProfileSettings = lazy(() => import("./pages/ProfileSettings"));
 
 // Import Components
 const Navbar = lazy(() => import("./components/navbar/Navbar"));
@@ -110,10 +115,12 @@ function App() {
             path="/login"
             element={<Login />}
           />
-          <Route
-            path="/profile"
-            element={<Profile />}
-          />
+          <Route path="/users">
+            <Route
+              path="profile"
+              element={<Profile />}
+            />
+          </Route>
           <Route
             path="/register"
             element={<Register />}
@@ -148,6 +155,24 @@ function App() {
             path="/history"
             element={<History />}
           />
+          <Route path="/settings">
+            <Route
+              path="profile"
+              element={<ProfileSettings />}
+            />
+            <Route
+              path="personal"
+              element={<PersonalData />}
+            />
+            <Route
+              path="balance"
+              element={<Balance />}
+            />
+            <Route
+              path="account"
+              element={<AccountSettings />}
+            />
+          </Route>
           <Route
             path="*"
             element={<NotFound />}
