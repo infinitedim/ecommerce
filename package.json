@@ -5,10 +5,6 @@
   "type": "module",
   "readme": "./README.md",
   "license": "MIT",
-  "engines": {
-    "node": "v16.18.0",
-    "npm": "8.19.2"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/infinitedim/ecommerce.git"
