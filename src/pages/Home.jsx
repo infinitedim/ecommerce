@@ -5,9 +5,9 @@ import { useRef, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import axios from "axios";
 import LoadingBar from "react-top-loading-bar";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import useSlider from "../hooks/useSlider";
+import getBreakpoint from "../utils/get-breakpoint";
 import ProductCard from "../components/ProductCard";
 import HeroImage1 from "../assets/img/hero_1.jpg";
 import HeroImage2 from "../assets/img/hero_2.jpg";
@@ -15,8 +15,10 @@ import HeroImage3 from "../assets/img/hero_3.jpg";
 import { ReactComponent as IconChevronLeft } from "../assets/ico/ic-chevron-left.svg";
 import { ReactComponent as IconChevronRight } from "../assets/ico/ic-chevron-right.svg";
 import ExampleProductImage from "../assets/img/hat.png";
-import ProductCategoryImageForMen from "../assets/img/man.png";
-import ProductCategoryImageForWomen from "../assets/img/woman.png";
+import ImageForMenMobile from "../assets/img/mobile-men.png";
+import ImageForWomenMobile from "../assets/img/mobile-women.png";
+import ImageForMen from "../assets/img/men.png";
+import ImageForWomen from "../assets/img/women.png";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +33,42 @@ export default function Home() {
     ref: productSlideRef,
     isLoadingData: isLoading,
   });
+
+  const renderWomenImage = () => {
+    if (getBreakpoint() === "xs" || getBreakpoint() === "sm") {
+      return (
+        <img
+          src={ImageForWomenMobile}
+          alt="Product Categories for women"
+        />
+      );
+    }
+
+    return (
+      <img
+        src={ImageForWomen}
+        alt="Product Categories for women"
+      />
+    );
+  };
+
+  const renderMenImage = () => {
+    if (getBreakpoint() === "xs" || getBreakpoint() === "sm") {
+      return (
+        <img
+          src={ImageForMenMobile}
+          alt="Product Categories for men"
+        />
+      );
+    }
+
+    return (
+      <img
+        src={ImageForMen}
+        alt="Product Categories for men"
+      />
+    );
+  };
 
   const handleScroll = () => {
     if (window.scrollY >= 500) return;
@@ -274,46 +312,19 @@ export default function Home() {
             <span className="font-neue-machina font-normal">men</span> and{" "}
             <span className="font-neue-machina font-normal">women</span>
           </h2>
-
-          <div className="image-container relative mt-32 flex h-[70vh] w-4/5 justify-around">
+          <div className="my-20 flex flex-col items-center justify-around md:flex-row">
             <div className="women">
-              <LazyLoadImage
-                src={ProductCategoryImageForWomen}
-                alt="Category women"
-                className="img-animation-load hero-image absolute left-[20rem] h-[350px] rotate-[5deg]"
-              />
-              <LazyLoadImage
-                src={ProductCategoryImageForWomen}
-                alt="Category women"
-                className="img-animation-load hero-image absolute z-10 h-[350px]"
-              />
-              <LazyLoadImage
-                src={ProductCategoryImageForWomen}
-                alt="Category women"
-                className="img-animation-load hero-image absolute left-[13rem] h-[350px] -rotate-[5deg]"
-              />
+              <figure>{renderWomenImage()}</figure>
+              <h1 className="mt-3 font-sans text-xl font-light">Women</h1>
             </div>
             <div className="men">
-              <LazyLoadImage
-                src={ProductCategoryImageForMen}
-                alt="Category men"
-                className="img-animation-load hero-image absolute -right-3 h-[350px] rotate-[5deg]"
-              />
-              <LazyLoadImage
-                src={ProductCategoryImageForMen}
-                alt="Category men"
-                className="img-animation-load hero-image absolute z-10 h-[350px]"
-              />
-              <LazyLoadImage
-                src={ProductCategoryImageForMen}
-                alt="Category men"
-                className="img-animation-load hero-image absolute right-[8rem] h-[350px] -rotate-[5deg]"
-              />
+              <figure>{renderMenImage()}</figure>
+              <h1 className="mt-3 font-sans text-xl font-light">Men</h1>
             </div>
           </div>
           <button
             type="submit"
-            className="bg-custom-white-900 px-5 py-3 text-custom-black-900"
+            className="mt-10 mb-10 bg-custom-white-900 px-5 py-3 text-custom-black-900"
           >
             <Link to="/products">See all products</Link>
           </button>
