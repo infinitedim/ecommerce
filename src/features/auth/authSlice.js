@@ -6,8 +6,6 @@ const { SessionStorage, LocalStorage } = Storage;
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    token: SessionStorage.getValue("token") || null,
-    uid: null,
     isAuthenticated: false,
   },
   reducers: {
@@ -17,8 +15,6 @@ const authSlice = createSlice({
     }),
 
     logout: (state) => {
-      state.token = null;
-      state.uid = null;
       state.isAuthenticated = false;
 
       SessionStorage.clearAll();
