@@ -3,11 +3,11 @@ const getBreakpoint = () => {
     {
       name: "xs",
       min: 0,
-      max: 575,
+      max: 639,
     },
     {
       name: "sm",
-      min: 576,
+      min: 640,
       max: 767,
     },
     {
@@ -18,11 +18,16 @@ const getBreakpoint = () => {
     {
       name: "lg",
       min: 992,
-      max: 1199,
+      max: 1279,
     },
     {
       name: "xl",
-      min: 1200,
+      min: 1280,
+      max: 1535,
+    },
+    {
+      name: "2xl",
+      min: 1536,
       max: Infinity,
     },
   ];
