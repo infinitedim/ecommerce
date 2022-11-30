@@ -150,8 +150,8 @@ export default function Product() {
                   </div>
                 </div>
               </div>
-              <div className="flex">
-                <span className="title-font text-2xl font-medium text-gray-900">
+              <div className="flex items-center">
+                <span className="title-font text-2xl font-medium text-custom-black-500">
                   ${data.price}
                 </span>
                 <button

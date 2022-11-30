@@ -27,13 +27,12 @@ export default function Products() {
 
   return (
     <div className="products flex flex-col items-center">
-      <h1 className="m-auto mt-40 mb-20 self-center font-syne text-5xl text-custom-black-900">
+      <h1 className="m-auto mt-40 mb-10 font-sans text-3xl font-bold text-custom-black-900">
         All Products
       </h1>
-
       <div className="content flex w-full justify-around">
         <SearchBar />
-        <div className="products-container grid w-3/5 grid-cols-3 grid-rows-3">
+        <div className="products-container grid w-[70%] grid-cols-3 grid-rows-3">
           {isLoading && (
             <>
               <ProductCard isSkeleton />
