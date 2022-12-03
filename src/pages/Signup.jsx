@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
-import axios from "axios";
+// import axios from "axios";
 import { ReactComponent as User } from "../assets/ico/ic-user.svg";
 import { ReactComponent as Email } from "../assets/ico/ic-mail.svg";
 import { ReactComponent as Lock } from "../assets/ico/ic-lock.svg";
