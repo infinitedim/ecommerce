@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/alt-text */
 import { Fade } from "react-awesome-reveal";
-import Error from "../assets/img/404.png";
+import Error from "../assets/img/404.webp";
 
 export default function NotFound() {
   return (
@@ -11,7 +10,10 @@ export default function NotFound() {
         duration={1000}
         direction="down"
       >
-        <img src={Error} />
+        <img
+          src={Error}
+          alt="404 Page Not Found"
+        />
         <h2>Page Not Found</h2>
       </Fade>
     </div>

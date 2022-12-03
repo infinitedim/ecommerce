@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-use-before-define */
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Io } from "../../assets/ico/IO.svg";
@@ -10,7 +8,6 @@ import { ReactComponent as IconLove } from "../../assets/ico/ic-heart.svg";
 import { ReactComponent as IconUser } from "../../assets/ico/ic-user.svg";
 import getBreakpoint from "../../utils/get-breakpoint";
 import NavbarMenu from "./NavbarMenu";
-import NavbarProfileMenu from "./NavbarProfileMenu";
 
 export default function Navbar({ isScrolled }) {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -108,8 +105,6 @@ export default function Navbar({ isScrolled }) {
             <span aria-hidden="true" />
           </button>
         </div>
-
-        <NavbarProfileMenu />
       </div>
     </nav>
   );

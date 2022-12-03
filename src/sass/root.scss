@@ -377,7 +377,7 @@ button:hover ~ .custom-cursor {
   .img-animation {
     &-load {
       --animation-delay: 0.5s;
-      transiton: transform 0.5s ease-in-out;
+      transition: transform 0.5s ease-in-out;
       opacity: 0;
       animation: img-load 1s var(--animation-delay) ease-in-out forwards;
     }
@@ -387,17 +387,17 @@ button:hover ~ .custom-cursor {
 /* Custom Background */
 .bg-noise {
   &-pink {
-    background-image: url('../assets/img/bg-noise-pink.jpg');
+    background-image: url('../assets/img/bg-noise-pink.webp');
     background-size: cover;
   }
 
   &-white {
-    background-image: url('../assets/img/bg-noise-white.jpg');
+    background-image: url('../assets/img/bg-noise-white.webp');
     background-size: cover;
   }
 
   &-black {
-    background-image: url('../assets/img/bg-noise-black.jpg');
+    background-image: url('../assets/img/bg-noise-black.webp');
     background-size: cover;
   }
 }
