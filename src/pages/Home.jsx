@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable import/no-cycle */
-/* eslint-disable jsx-a11y/control-has-associated-label */
+
 import { useRef, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import axios from "axios";
@@ -9,15 +8,16 @@ import { Link } from "react-router-dom";
 import useSlider from "../hooks/useSlider";
 import getBreakpoint from "../utils/get-breakpoint";
 import ProductCard from "../components/ProductCard";
-import HeroImage1 from "../assets/img/hero_1.jpg";
-import HeroImage2 from "../assets/img/hero_2.jpg";
-import HeroImage3 from "../assets/img/hero_3.jpg";
+import HeroImage1 from "../assets/img/hero_1.webp";
+import HeroImage2 from "../assets/img/hero_2.webp";
+import HeroImage3 from "../assets/img/hero_3.webp";
 import { ReactComponent as IconChevronLeft } from "../assets/ico/ic-chevron-left.svg";
 import { ReactComponent as IconChevronRight } from "../assets/ico/ic-chevron-right.svg";
-import ImageForMenMobile from "../assets/img/mobile-men.png";
-import ImageForWomenMobile from "../assets/img/mobile-women.png";
-import ImageForMen from "../assets/img/men.png";
-import ImageForWomen from "../assets/img/women.png";
+import ExampleProductImage from "../assets/img/hat.webp";
+import ImageForMenMobile from "../assets/img/mobile-men.webp";
+import ImageForWomenMobile from "../assets/img/mobile-women.webp";
+import ImageForMen from "../assets/img/men.webp";
+import ImageForWomen from "../assets/img/women.webp";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
