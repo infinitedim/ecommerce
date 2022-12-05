@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-/* eslint-disable max-len */
-/* eslint-disable react/require-default-props */
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link, useLocation } from "react-router-dom";
