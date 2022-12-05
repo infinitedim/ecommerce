@@ -2,9 +2,9 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link, useLocation } from "react-router-dom";
-import { ReactComponent as IconLove } from "../assets/ico/ic-heart.svg";
+import { ReactComponent as ShoppingBag } from "../assets/ico/ic-shopping-bag.svg";
 
-export default function ProductCard({
+export default function WishlistCard({
   isSkeleton = false,
   productName = "",
   productPrice = "",
@@ -47,7 +47,7 @@ export default function ProductCard({
       </Link>
       <div
         id="product-card-detail"
-        className="max-w-250 flex flex-row items-center justify-between gap-4 py-6"
+        className="max-w-250 flex flex-col items-center justify-between gap-4 py-6"
       >
         <Link
           to={location.pathname === "/" ? `products/${id}` : `${id}`}
@@ -58,16 +58,18 @@ export default function ProductCard({
           </h3>
           <span className="text-xs line-clamp-1">$ {productPrice}</span>
         </Link>
-        <button
-          className="btn-default tooltip group border-0 hover:text-custom-black-900"
-          type="button"
-        >
-          <IconLove className="h-6 w-6 " />
-
-          <p className="tooltip-text-center group-hover:-bottom-[30px]">
-            Like this product
-          </p>
-        </button>
+        <div className="button-container flex w-full flex-row items-center justify-between">
+          <button
+            className="tooltip group flex w-4/5 items-center justify-around border-2 border-custom-black-900 p-2 hover:text-custom-black-900"
+            type="button"
+          >
+            <span className="text-custom-black-900">Add to shopping bag</span>
+            <ShoppingBag className="h-6 w-6 " />
+            <p className="tooltip-text-center group-hover:-bottom-[30px]">
+              Add to shopping bag
+            </p>
+          </button>
+        </div>
       </div>
     </div>
   );

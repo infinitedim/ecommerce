@@ -2,6 +2,7 @@
 /* eslint-disable no-useless-return */
 import axios from "axios";
 import { useRef, useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 import Pagination from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
 import { ReactComponent as Search } from "../assets/ico/ic-search.svg";
@@ -47,7 +48,7 @@ export default function Products() {
       <div className="content flex w-full justify-around">
         <div>
           <h1 className="font-sans text-3xl font-normal text-custom-black-900">
-            Search Bar
+            Search Product
           </h1>
           <label
             htmlFor="search"
@@ -82,11 +83,18 @@ export default function Products() {
               Relevance
             </h1>
             <ul className="flex h-[25vh] flex-col items-start justify-around text-custom-black-900">
-              <li>01</li>
-              <li>02</li>
-              <li>03</li>
-              <li>04</li>
-              <li>05</li>
+              <li>
+                Trending
+              </li>
+              <li>
+                Latest Arrivals
+              </li>
+              <li>
+                Price: low to high
+              </li>
+              <li>
+                Price: high to low
+              </li>
             </ul>
           </div>
         </div>
@@ -102,25 +110,33 @@ export default function Products() {
               <ProductCard isSkeleton />
             </>
           )}
-          {!isLoading && filteredProduct.length > 0
-            ? filteredProduct.map((product) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                productName={product.title}
-                productPrice={product.price}
-                productImage={product.image}
-              />
-            ))
-            : products.map((product) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                productName={product.title}
-                productPrice={product.price}
-                productImage={product.image}
-              />
-            ))}
+          <Fade
+            cascade
+            triggerOnce
+            duration={1000}
+          >
+            {!isLoading && filteredProduct.length > 0
+              ? filteredProduct.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  productName={product.title}
+                  productPrice={product.price}
+                  productImage={product.image}
+                />
+              ))
+              : products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  productName={product.title}
+                  productPrice={product.price}
+                  productImage={product.image}
+                />
+              ))}
+
+
+          </Fade>
         </div>
       </div>
       <Pagination />

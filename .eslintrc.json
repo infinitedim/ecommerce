@@ -84,6 +84,13 @@
         "controlComponents": ["CustomInput"],
         "depth": 3
       }
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
     ]
   }
 }

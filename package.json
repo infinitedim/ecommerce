@@ -15,8 +15,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "build:sass": "sass src/sass/index.sass:src/css/root.css --style compressed",
-    "build:tailwind": "tailwindcss build src/css/index.css -o src/css/tailwind.css"
+    "build:sass": "sass src/sass/root.sass:src/css/root.css --style compressed",
+    "build:tailwind": "tailwindcss build src/sass/root.sass -o src/css/tailwind.css"
   },
   "browserslist": {
     "production": [
@@ -44,6 +44,7 @@
     "react-top-loading-bar": "^2.3.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
     "@svgr/rollup": "^6.5.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
@@ -67,6 +68,8 @@
     "sass": "^1.56.0",
     "tailwindcss": "^3.2.2",
     "vite": "^3.2.0",
-    "vite-plugin-pwa": "^0.13.3"
+    "vite-plugin-pwa": "^0.13.3",
+    "workbox-build": "^6.5.4",
+    "workbox-window": "^6.5.4"
   }
 }
