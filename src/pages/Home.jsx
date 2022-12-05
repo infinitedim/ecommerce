@@ -14,7 +14,6 @@ import HeroImage2 from "../assets/img/hero_2.jpg";
 import HeroImage3 from "../assets/img/hero_3.jpg";
 import { ReactComponent as IconChevronLeft } from "../assets/ico/ic-chevron-left.svg";
 import { ReactComponent as IconChevronRight } from "../assets/ico/ic-chevron-right.svg";
-import ExampleProductImage from "../assets/img/hat.png";
 import ImageForMenMobile from "../assets/img/mobile-men.png";
 import ImageForWomenMobile from "../assets/img/mobile-women.png";
 import ImageForMen from "../assets/img/men.png";
