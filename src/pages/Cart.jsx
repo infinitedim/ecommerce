@@ -47,7 +47,7 @@ export default function Cart() {
                 <span className="text-xs">Xiaomi</span>
                 <Link
                   to="#"
-                  className="flex items-center justify-start text-xs font-semibold text-gray-500 hover:text-red-500"
+                  className="flex items-center justify-start text-xs font-semibold text-custom-black-500"
                 >
                   <Trash />
                   <span>Remove</span>

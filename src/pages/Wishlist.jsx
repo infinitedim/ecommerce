@@ -18,9 +18,12 @@ export default function Products() {
     const fetchData = async () => {
       ref?.current?.continuousStart();
 
-      const response = await axios("https://fakestoreapi.com/products?sort=desc", {
-        setTimeout: 2500,
-      });
+      const response = await axios(
+        "https://fakestoreapi.com/products?sort=desc",
+        {
+          setTimeout: 2500,
+        },
+      );
 
       setWishlists(response.data);
       ref?.current?.complete();
@@ -34,7 +37,7 @@ export default function Products() {
     if (wishlists.length === 0) return;
 
     const filteredByKeyword = wishlists.filter((wishlist) =>
-      wishlist.title.includes(wishlistName),
+      wishlist.title.toLowerCase().includes(wishlistName),
     );
 
     setFilteredProduct(filteredByKeyword);
@@ -98,23 +101,23 @@ export default function Products() {
           >
             {!isLoading && filteredProduct.length > 0
               ? filteredProduct.map((product) => (
-                <WishlistCard
-                  key={product.id}
-                  id={product.id}
-                  productName={product.title}
-                  productPrice={product.price}
-                  productImage={product.image}
-                />
-              ))
+                  <WishlistCard
+                    key={product.id}
+                    id={product.id}
+                    productName={product.title}
+                    productPrice={product.price}
+                    productImage={product.image}
+                  />
+                ))
               : wishlists.map((product) => (
-                <WishlistCard
-                  key={product.id}
-                  id={product.id}
-                  productName={product.title}
-                  productPrice={product.price}
-                  productImage={product.image}
-                />
-              ))}
+                  <WishlistCard
+                    key={product.id}
+                    id={product.id}
+                    productName={product.title}
+                    productPrice={product.price}
+                    productImage={product.image}
+                  />
+                ))}
           </Fade>
         </div>
       </div>
