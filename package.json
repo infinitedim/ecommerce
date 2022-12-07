@@ -15,8 +15,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "build:sass": "sass src/sass/root.sass:src/css/root.css --style compressed",
-    "build:tailwind": "tailwindcss build src/sass/root.sass -o src/css/tailwind.css"
+    "build:sass": "sass src/sass/root.scss:src/css/root.css --style compressed",
+    "build:tailwind": "tailwindcss build src/sass/root.scss -o src/css/tailwind.css"
   },
   "browserslist": {
     "production": [

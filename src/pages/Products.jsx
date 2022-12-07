@@ -1,11 +1,10 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-useless-return */
 import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import Pagination from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
 import { ReactComponent as Search } from "../assets/ico/ic-search.svg";
+import ProductsNotFound from "../components/ProductsNotFound";
 
 export default function Products() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +33,7 @@ export default function Products() {
     if (products.length === 0) return;
 
     const filteredByKeyword = products.filter((product) =>
-      product.title.includes(productName),
+      product.title.toLowerCase().includes(productName),
     );
 
     setFilteredProduct(filteredByKeyword);
@@ -83,18 +82,10 @@ export default function Products() {
               Relevance
             </h1>
             <ul className="flex h-[25vh] flex-col items-start justify-around text-custom-black-900">
-              <li>
-                Trending
-              </li>
-              <li>
-                Latest Arrivals
-              </li>
-              <li>
-                Price: low to high
-              </li>
-              <li>
-                Price: high to low
-              </li>
+              <li>Trending</li>
+              <li>Latest Arrivals</li>
+              <li>Price: low to high</li>
+              <li>Price: high to low</li>
             </ul>
           </div>
         </div>
@@ -113,10 +104,10 @@ export default function Products() {
           <Fade
             cascade
             triggerOnce
-            duration={1000}
+            duration={500}
           >
-            {!isLoading && filteredProduct.length > 0
-              ? filteredProduct.map((product) => (
+            {!isLoading && filteredProduct.length ? (
+              filteredProduct.map((product) => (
                 <ProductCard
                   key={product.id}
                   id={product.id}
@@ -125,17 +116,9 @@ export default function Products() {
                   productImage={product.image}
                 />
               ))
-              : products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  productName={product.title}
-                  productPrice={product.price}
-                  productImage={product.image}
-                />
-              ))}
-
-
+            ) : (
+              <ProductsNotFound />
+            )}
           </Fade>
         </div>
       </div>
