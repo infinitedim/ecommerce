@@ -1,4 +1,4 @@
-import { ReactComponent as Error } from "../assets/img/404.webp";
+import Error from "../assets/img/404.webp";
 
 export default function ProductsNotFound() {
   return (

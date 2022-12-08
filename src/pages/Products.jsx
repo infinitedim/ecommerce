@@ -1,10 +1,9 @@
-import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import Pagination from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
 import { ReactComponent as Search } from "../assets/ico/ic-search.svg";
-import ProductsNotFound from "../components/ProductsNotFound";
+import { useGetAllProductsQuery } from "../features/api/apiSlice";
 
 export default function Products() {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,16 +11,16 @@ export default function Products() {
   const [filteredProduct, setFilteredProduct] = useState([]);
   const [productName, setProductName] = useState("");
   const ref = useRef(null);
+  const { data } = useGetAllProductsQuery();
 
   useEffect(() => {
     const fetchData = async () => {
       ref?.current?.continuousStart();
 
-      const response = await axios("https://fakestoreapi.com/products", {
-        setTimeout: 2500,
-      });
+      const response = data;
 
-      setProducts(response.data);
+      setProducts(response);
+      console.log(response);
       ref?.current?.complete();
       setIsLoading(false);
     };
@@ -30,9 +29,9 @@ export default function Products() {
   }, []);
 
   useEffect(() => {
-    if (products.length === 0) return;
+    if (products?.length === 0) return;
 
-    const filteredByKeyword = products.filter((product) =>
+    const filteredByKeyword = products?.filter((product) =>
       product.title.toLowerCase().includes(productName),
     );
 
@@ -106,19 +105,25 @@ export default function Products() {
             triggerOnce
             duration={500}
           >
-            {!isLoading && filteredProduct.length ? (
-              filteredProduct.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  productName={product.title}
-                  productPrice={product.price}
-                  productImage={product.image}
-                />
-              ))
-            ) : (
-              <ProductsNotFound />
-            )}
+            {!isLoading && filteredProduct?.length > 0
+              ? filteredProduct.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    productName={product.title}
+                    productPrice={product.price}
+                    productImage={product.image}
+                  />
+                ))
+              : products?.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    productName={product.title}
+                    productPrice={product.price}
+                    productImage={product.image}
+                  />
+                ))}
           </Fade>
         </div>
       </div>
