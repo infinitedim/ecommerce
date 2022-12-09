@@ -1,27 +1,26 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { ReactComponent as Love } from "../assets/ico/ic-heart.svg";
 import { ReactComponent as Facebook } from "../assets/ico/ic-facebook.svg";
 import { ReactComponent as Twitter } from "../assets/ico/ic-twitter.svg";
 import { ReactComponent as Comment } from "../assets/ico/ic-comment.svg";
+import { useGetProductByIdQuery } from "../features/api/apiSlice";
 
 export default function Product() {
   const { id } = useParams();
-  const [data, setData] = useState([]);
-  const [rating, setRating] = useState([]);
+  const [product, setProduct] = useState([]);
+  const { data } = useGetProductByIdQuery(id);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios(`https://fakestoreapi.com/products/${id}`);
+      const response = await data;
 
-      setData(response.data);
-      console.log(response.data);
-      setRating(response.data.rating);
+      setProduct(response);
     };
 
     fetchData();
-  }, []);
+  }, [data]);
 
   return (
     <>
@@ -31,14 +30,14 @@ export default function Product() {
             <img
               alt="ecommerce"
               className="h-64 w-full rounded object-cover object-center lg:h-auto lg:w-1/2"
-              src={data.image}
+              src={product?.image}
             />
             <div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10">
               <h2 className="title-font text-sm tracking-widest text-gray-500">
                 BRAND NAME
               </h2>
               <h1 className="title-font mb-1 text-3xl font-medium text-gray-900">
-                {data.title}
+                {product?.title}
               </h1>
               <div className="mb-4 flex">
                 <span className="flex items-center">
@@ -98,7 +97,7 @@ export default function Product() {
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
                   <span className="ml-3 text-gray-600">
-                    {rating.count} Reviews
+                    {product?.rating?.count} Reviews
                   </span>
                 </span>
                 <span className="space-x-2s ml-3 flex border-l-2 border-gray-200 py-2 pl-3">
@@ -122,7 +121,7 @@ export default function Product() {
                   </Link>
                 </span>
               </div>
-              <p className="leading-relaxed">{data.description}</p>
+              <p className="leading-relaxed">{product?.description}</p>
               <div className="mt-6 mb-5 flex items-center border-b-2 border-gray-100 pb-5">
                 <div className="ml-6 flex items-center">
                   <span className="mr-3">Size</span>
@@ -151,7 +150,7 @@ export default function Product() {
               </div>
               <div className="flex items-center">
                 <span className="title-font text-2xl font-medium text-custom-black-500">
-                  ${data.price}
+                  ${product?.price}
                 </span>
                 <button
                   className="btn tooltip ml-auto flex"

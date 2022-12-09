@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 import useSlider from "../hooks/useSlider";
 import getBreakpoint from "../utils/get-breakpoint";
 import ProductCard from "../components/ProductCard";
-import HeroImage1 from "../assets/img/hero_1.webp";
-import HeroImage2 from "../assets/img/hero_2.webp";
-import HeroImage3 from "../assets/img/hero_3.webp";
+import HeroImage1 from "../assets/img/hero_1.jpg";
+import HeroImage2 from "../assets/img/hero_2.jpg";
+import HeroImage3 from "../assets/img/hero_3.jpg";
 import { ReactComponent as IconChevronLeft } from "../assets/ico/ic-chevron-left.svg";
 import { ReactComponent as IconChevronRight } from "../assets/ico/ic-chevron-right.svg";
 import ExampleProductImage from "../assets/img/hat.webp";
@@ -18,10 +18,11 @@ import ImageForMenMobile from "../assets/img/mobile-men.webp";
 import ImageForWomenMobile from "../assets/img/mobile-women.webp";
 import ImageForMen from "../assets/img/men.webp";
 import ImageForWomen from "../assets/img/women.webp";
+import { useGetAllProductsQuery } from "../features/api/apiSlice";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [sampleData, setSampleData] = useState([]);
+  const [products, setProducts] = useState([]);
   const ref = useRef(null);
   const HeroImage1Ref = useRef(null);
   const HeroImage2Ref = useRef(null);
@@ -32,6 +33,8 @@ export default function Home() {
     ref: productSlideRef,
     isLoadingData: isLoading,
   });
+
+  const { data } = useGetAllProductsQuery();
 
   const renderWomenImage = () => {
     if (getBreakpoint() === "xs" || getBreakpoint() === "sm") {
@@ -98,17 +101,15 @@ export default function Home() {
     const fetchData = async () => {
       ref?.current?.continuousStart();
 
-      const response = await axios("https://fakestoreapi.com/products", {
-        setTimeout: 2500,
-      });
+      const response = await data;
 
-      setSampleData(response.data);
+      setProducts(response);
       ref?.current?.complete();
       setIsLoading(false);
     };
 
     fetchData();
-  }, []);
+  }, [data]);
 
   return (
     <>
@@ -288,7 +289,7 @@ export default function Home() {
               )}
               {/* FAFCFF */}
               {!isLoading &&
-                sampleData.flatMap((item) => (
+                products?.map((item) => (
                   <ProductCard
                     key={item.id}
                     id={item.id}

@@ -387,17 +387,17 @@ button:hover ~ .custom-cursor {
 /* Custom Background */
 .bg-noise {
   &-pink {
-    background-image: url('../assets/img/bg-noise-pink.webp');
+    background-image: url('../assets/img/bg-noise-pink.jpg');
     background-size: cover;
   }
 
   &-white {
-    background-image: url('../assets/img/bg-noise-white.webp');
+    background-image: url('../assets/img/bg-noise-white.jpg');
     background-size: cover;
   }
 
   &-black {
-    background-image: url('../assets/img/bg-noise-black.webp');
+    background-image: url('../assets/img/bg-noise-black.jpg');
     background-size: cover;
   }
 }

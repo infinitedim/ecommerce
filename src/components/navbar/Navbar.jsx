@@ -59,7 +59,10 @@ export default function Navbar({ isScrolled }) {
             type="button"
             className="tooltip flex items-center"
           >
-            <Link to="/cart">
+            <Link
+              to="/cart"
+              className="cart"
+            >
               <IconShoppingBag
                 className="h-[auto] w-[auto]"
                 stroke="text-custom-black-900"
@@ -71,7 +74,10 @@ export default function Navbar({ isScrolled }) {
             type="button"
             className="tooltip flex items-center"
           >
-            <Link to="/wishlist">
+            <Link
+              to="/wishlist"
+              className="wishlist"
+            >
               <IconLove
                 className="h-[auto] w-[auto]"
                 stroke="text-custom-white-900"
@@ -83,13 +89,16 @@ export default function Navbar({ isScrolled }) {
             type="button"
             className="tooltip flex items-center"
           >
-            <Link to="/users/">
+            <button
+              type="button"
+              className="user-dropdown"
+            >
               <IconUser
                 className="h-[auto] w-[auto]"
                 stroke="text-custom-white-900"
               />
               <p className="tooltip-text">Profile</p>
-            </Link>
+            </button>
           </button>
           {/* End Icons */}
 

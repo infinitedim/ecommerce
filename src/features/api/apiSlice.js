@@ -1,40 +1,20 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import axios from "axios";
-
-const axiosBaseQuery =
-  ({ baseUrl } = { baseUrl: "" }) =>
-  async ({ url, method, data, params }) => {
-    try {
-      const result = await axios({
-        url: `${baseUrl}${url}`,
-        method,
-        data,
-        params,
-      });
-      return { data: result.data };
-    } catch (axiosError) {
-      const error = axiosError;
-      return {
-        error: {
-          status: error.response?.status,
-          data: error.response?.data || error.message,
-        },
-      };
-    }
-  };
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
-  baseQuery: axiosBaseQuery({
+  baseQuery: fetchBaseQuery({
     baseUrl: "https://fakestoreapi.com",
   }),
-  endpoints(builder) {
+  refetchOnMountOrArgChange: true,
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
+  endpoints: (builder) => {
     return {
       getAllProducts: builder.query({
-        query: () => ({ url: "/products", method: "get" }),
+        query: () => "/products",
       }),
       getProductById: builder.query({
-        query: (id) => ({ url: `/products/${id}`, method: "get" }),
+        query: (id) => `/products/${id}`,
       }),
     };
   },

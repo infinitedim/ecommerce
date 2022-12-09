@@ -17,16 +17,15 @@ export default function Products() {
     const fetchData = async () => {
       ref?.current?.continuousStart();
 
-      const response = data;
+      const response = await data;
 
       setProducts(response);
-      console.log(response);
       ref?.current?.complete();
       setIsLoading(false);
     };
 
     fetchData();
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     if (products?.length === 0) return;
@@ -115,7 +114,8 @@ export default function Products() {
                     productImage={product.image}
                   />
                 ))
-              : products?.map((product) => (
+              : products &&
+                products.map((product) => (
                   <ProductCard
                     key={product.id}
                     id={product.id}
