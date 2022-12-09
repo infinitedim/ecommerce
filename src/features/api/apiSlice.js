@@ -5,14 +5,19 @@ export const productsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://fakestoreapi.com",
   }),
-  endpoints: (builder) => ({
-    getAllProducts: builder.query({
-      query: () => ({ url: "/products" }),
-    }),
-    getProductsById: builder.query({
-      query: (id) => ({ url: `/products/${id}` }),
-    }),
-  }),
+  refetchOnMountOrArgChange: true,
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
+  endpoints: (builder) => {
+    return {
+      getAllProducts: builder.query({
+        query: () => "/products",
+      }),
+      getProductById: builder.query({
+        query: (id) => `/products/${id}`,
+      }),
+    };
+  },
 });
 
-export const { useGetAllProductsQuery, useGetProductsByIdQuery } = productsApi;
+export const { useGetAllProductsQuery, useGetProductByIdQuery } = productsApi;
