@@ -1,8 +1,5 @@
-/* eslint-disable no-unused-vars */
-
 import { useRef, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
-import axios from "axios";
 import LoadingBar from "react-top-loading-bar";
 import { Link } from "react-router-dom";
 import useSlider from "../hooks/useSlider";
@@ -13,7 +10,6 @@ import HeroImage2 from "../assets/img/hero_2.jpg";
 import HeroImage3 from "../assets/img/hero_3.jpg";
 import { ReactComponent as IconChevronLeft } from "../assets/ico/ic-chevron-left.svg";
 import { ReactComponent as IconChevronRight } from "../assets/ico/ic-chevron-right.svg";
-import ExampleProductImage from "../assets/img/hat.webp";
 import ImageForMenMobile from "../assets/img/mobile-men.webp";
 import ImageForWomenMobile from "../assets/img/mobile-women.webp";
 import ImageForMen from "../assets/img/men.webp";
@@ -239,6 +235,7 @@ export default function Home() {
                 <button
                   className="btn whitespace-nowrap"
                   type="button"
+                  aria-label="notify-button"
                 >
                   Notify me
                 </button>
@@ -256,6 +253,7 @@ export default function Home() {
                   type="button"
                   onClick={prevSlide}
                   disabled={currentSlide === 0 && true}
+                  aria-label="prev-slide-button"
                 >
                   <IconChevronLeft className="h-6 w-6" />
                 </button>
@@ -265,6 +263,7 @@ export default function Home() {
                   type="button"
                   onClick={nextSlide}
                   disabled={currentSlide >= maxSlide && true}
+                  aria-label="next-slide-button"
                 >
                   <IconChevronRight className="h-6 w-6" />
                 </button>
@@ -313,18 +312,24 @@ export default function Home() {
             <span className="font-neue-machina font-normal">women</span>
           </h2>
           <div className="my-20 flex flex-col items-center justify-around md:flex-row">
-            <div className="women">
-              <figure>{renderWomenImage()}</figure>
-              <h1 className="mt-3 font-sans text-xl font-light">Women</h1>
-            </div>
-            <div className="men">
-              <figure>{renderMenImage()}</figure>
-              <h1 className="mt-3 font-sans text-xl font-light">Men</h1>
-            </div>
+            <Fade
+              triggerOnce
+              duration={1000}
+            >
+              <div className="women">
+                {renderWomenImage()}
+                <h1 className="mt-3 font-sans text-xl font-light">Women</h1>
+              </div>
+              <div className="men">
+                {renderMenImage()}
+                <h1 className="mt-3 font-sans text-xl font-light">Men</h1>
+              </div>
+            </Fade>
           </div>
           <button
             type="submit"
             className="mt-10 mb-10 bg-custom-white-900 px-5 py-3 text-custom-black-900"
+            aria-label="all-products-button"
           >
             <Link to="/products">See all products</Link>
           </button>

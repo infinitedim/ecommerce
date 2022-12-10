@@ -8,7 +8,6 @@ export default function NotFound() {
         cascade
         triggerOnce
         duration={1000}
-        direction="down"
       >
         <img
           src={Error}

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import axios from "axios";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { ReactComponent as Love } from "../assets/ico/ic-heart.svg";
 import { ReactComponent as Facebook } from "../assets/ico/ic-facebook.svg";

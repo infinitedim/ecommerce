@@ -56,8 +56,9 @@ export default function Navbar({ isScrolled }) {
         <div className="flex items-center gap-5">
           {/* Icons */}
           <button
-            type="button"
+            aria-label="cart"
             className="tooltip flex items-center"
+            type="button"
           >
             <Link
               to="/cart"
@@ -73,6 +74,7 @@ export default function Navbar({ isScrolled }) {
           <button
             type="button"
             className="tooltip flex items-center"
+            aria-label="wishlist"
           >
             <Link
               to="/wishlist"
@@ -87,11 +89,13 @@ export default function Navbar({ isScrolled }) {
           </button>
           <button
             type="button"
+            aria-label="user"
             className="tooltip flex items-center"
           >
             <button
               type="button"
               className="user-dropdown"
+              aria-label="user-dropdown"
             >
               <IconUser
                 className="h-[auto] w-[auto]"

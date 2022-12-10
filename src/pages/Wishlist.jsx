@@ -1,11 +1,9 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-useless-return */
-import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import Pagination from "../components/Pagination";
 import WishlistCard from "../components/WishlistCard";
 import { ReactComponent as Search } from "../assets/ico/ic-search.svg";
+import { useSortProductsQuery } from "../features/api/apiSlice";
 
 export default function Products() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,30 +11,26 @@ export default function Products() {
   const [filteredProduct, setFilteredProduct] = useState([]);
   const [wishlistName, setWishlistName] = useState("");
   const ref = useRef(null);
+  const { data } = useSortProductsQuery();
 
   useEffect(() => {
     const fetchData = async () => {
       ref?.current?.continuousStart();
 
-      const response = await axios(
-        "https://fakestoreapi.com/products?sort=desc",
-        {
-          setTimeout: 2500,
-        },
-      );
+      const response = await data;
 
-      setWishlists(response.data);
+      setWishlists(response);
       ref?.current?.complete();
       setIsLoading(false);
     };
 
     fetchData();
-  }, []);
+  }, [data]);
 
   useEffect(() => {
-    if (wishlists.length === 0) return;
+    if (wishlists?.length === 0) return;
 
-    const filteredByKeyword = wishlists.filter((wishlist) =>
+    const filteredByKeyword = wishlists?.filter((wishlist) =>
       wishlist.title.toLowerCase().includes(wishlistName),
     );
 
@@ -92,6 +86,8 @@ export default function Products() {
               <WishlistCard isSkeleton />
               <WishlistCard isSkeleton />
               <WishlistCard isSkeleton />
+              <WishlistCard isSkeleton />
+              <WishlistCard isSkeleton />
             </>
           )}
           <Fade
@@ -99,8 +95,8 @@ export default function Products() {
             triggerOnce
             duration={500}
           >
-            {!isLoading && filteredProduct.length > 0
-              ? filteredProduct.map((product) => (
+            {!isLoading && filteredProduct?.length > 0
+              ? filteredProduct?.map((product) => (
                   <WishlistCard
                     key={product.id}
                     id={product.id}
@@ -109,7 +105,8 @@ export default function Products() {
                     productImage={product.image}
                   />
                 ))
-              : wishlists.map((product) => (
+              : wishlists &&
+                wishlists?.map((product) => (
                   <WishlistCard
                     key={product.id}
                     id={product.id}

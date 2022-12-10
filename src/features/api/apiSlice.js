@@ -13,6 +13,9 @@ export const productsApi = createApi({
       getAllProducts: builder.query({
         query: () => "/products",
       }),
+      sortProducts: builder.query({
+        query: () => "/products?sort=desc",
+      }),
       getProductById: builder.query({
         query: (id) => `/products/${id}`,
       }),
@@ -20,4 +23,8 @@ export const productsApi = createApi({
   },
 });
 
-export const { useGetAllProductsQuery, useGetProductByIdQuery } = productsApi;
+export const {
+  useGetAllProductsQuery,
+  useSortProductsQuery,
+  useGetProductByIdQuery,
+} = productsApi;

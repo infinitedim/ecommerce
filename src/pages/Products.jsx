@@ -105,7 +105,7 @@ export default function Products() {
             duration={500}
           >
             {!isLoading && filteredProduct?.length > 0
-              ? filteredProduct.map((product) => (
+              ? filteredProduct?.map((product) => (
                   <ProductCard
                     key={product.id}
                     id={product.id}
@@ -115,7 +115,7 @@ export default function Products() {
                   />
                 ))
               : products &&
-                products.map((product) => (
+                products?.map((product) => (
                   <ProductCard
                     key={product.id}
                     id={product.id}
