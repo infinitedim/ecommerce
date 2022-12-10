@@ -73,6 +73,7 @@ export default function Signin() {
           <button
             type="submit"
             className="btn tooltip m-5 w-1/4 px-8"
+            aria-label="login-button"
           >
             <span>Login</span>
             <p className="tooltip-text-center">Login</p>

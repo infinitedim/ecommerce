@@ -62,6 +62,7 @@ export default function WishlistCard({
           <button
             className="tooltip group flex w-4/5 items-center justify-around border-2 border-custom-black-900 p-2 hover:text-custom-black-900"
             type="button"
+            aria-label="cart-button"
           >
             <span className="text-custom-black-900">Add to shopping bag</span>
             <ShoppingBag className="h-6 w-6 " />

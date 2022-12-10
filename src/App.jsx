@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import useCursor from "./hooks/useCursor";
@@ -13,13 +12,10 @@ const Login = lazy(() => import("./pages/Signin"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Products = lazy(() => import("./pages/Products"));
 const Product = lazy(() => import("./pages/Product"));
-const Profile = lazy(() => import("./pages/Profile"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Register = lazy(() => import("./pages/Signup"));
 const Wishlist = lazy(() => import("./pages/Wishlist"));
-const AccountSettings = lazy(() => import("./pages/AccountSettings"));
-const Balance = lazy(() => import("./pages/Balance"));
-const PersonalData = lazy(() => import("./pages/PersonalData"));
-const ProfileSettings = lazy(() => import("./pages/ProfileSettings"));
+const Settings = lazy(() => import("./pages/Settings"));
 
 // Import Components
 const Navbar = lazy(() => import("./components/navbar/Navbar"));
@@ -117,8 +113,8 @@ function App() {
           />
           <Route path="/users">
             <Route
-              path="profile"
-              element={<Profile />}
+              path=":username"
+              element={<Dashboard />}
             />
           </Route>
           <Route
@@ -155,24 +151,10 @@ function App() {
             path="/history"
             element={<History />}
           />
-          <Route path="/settings">
-            <Route
-              path="profile"
-              element={<ProfileSettings />}
-            />
-            <Route
-              path="personal"
-              element={<PersonalData />}
-            />
-            <Route
-              path="balance"
-              element={<Balance />}
-            />
-            <Route
-              path="account"
-              element={<AccountSettings />}
-            />
-          </Route>
+          <Route
+            path="/settings"
+            element={<Settings />}
+          />
           <Route
             path="*"
             element={<NotFound />}

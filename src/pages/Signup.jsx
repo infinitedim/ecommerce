@@ -1,14 +1,38 @@
 /* eslint-disable no-unused-vars */
+import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
-// import axios from "axios";
 import { ReactComponent as User } from "../assets/ico/ic-user.svg";
 import { ReactComponent as Email } from "../assets/ico/ic-mail.svg";
 import { ReactComponent as Lock } from "../assets/ico/ic-lock.svg";
 import { ReactComponent as Miolica } from "../assets/ico/Logo_full.svg";
 
 export default function Signup() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confPassword, setConfPassword] = useState("");
+  const [msg, setMsg] = useState("");
+  const history = useNavigate();
+
+  const Register = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/users", {
+        name,
+        email,
+        password,
+        confPassword,
+      });
+      history.push("/");
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  };
+
   return (
     <div className="signup bg-noise-white h-screen overflow-y-hidden">
       <Fade
@@ -105,6 +129,7 @@ export default function Signup() {
           <button
             type="submit"
             className="btn tooltip m-5 px-8"
+            aria-label="signup-button"
           >
             <span>Sign up</span>
             <p className="tooltip-text-center">Sign Up</p>

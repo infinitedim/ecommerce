@@ -61,6 +61,7 @@ export default function ProductCard({
         <button
           className="btn-default tooltip group border-0 hover:text-custom-black-900"
           type="button"
+          aria-label="wishlist-button"
         >
           <IconLove className="h-6 w-6 " />
 
