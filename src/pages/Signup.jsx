@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,23 +8,23 @@ import { ReactComponent as Lock } from "../assets/ico/ic-lock.svg";
 import { ReactComponent as Miolica } from "../assets/ico/Logo_full.svg";
 
 export default function Signup() {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
   const [msg, setMsg] = useState("");
-  const history = useNavigate();
+  const navigate = useNavigate();
 
-  const Register = async (e) => {
-    e.preventDefault();
+  const Register = async () => {
     try {
-      await axios.post("http://localhost:5000/users", {
-        name,
+      await axios.post("http://localhost:88/api/v1/register", {
+        username,
         email,
         password,
         confPassword,
       });
-      history.push("/");
+      navigate("/");
+      console.error(msg);
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -46,22 +45,25 @@ export default function Signup() {
           className="form-group top-0 bottom-0 right-0 left-0 flex h-[85vh] w-[auto] flex-col items-center justify-evenly bg-transparent p-5"
           onSubmit={(e) => {
             e.preventDefault();
+            Register();
           }}
         >
           <h1 className="self-center text-2xl font-semibold text-custom-black-700">
             Sign up
           </h1>
           <label
-            htmlFor="name"
+            htmlFor="username"
             className="flex w-3/5 items-center justify-start border-b-2 border-custom-black-900"
           >
             <User className="mr-5 h-6 w-6 text-custom-black-900" />
             <input
               type="text"
-              placeholder="Fullname"
-              id="name"
-              name="name"
+              placeholder="Username"
+              id="username"
+              name="username"
               className="border-none bg-transparent focus:border-0 focus:outline-none focus:ring-0"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </label>
           <label
@@ -75,6 +77,8 @@ export default function Signup() {
               name="email"
               id="email"
               className="border-none bg-transparent focus:border-0 focus:outline-none focus:ring-0"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
           <label
@@ -88,6 +92,8 @@ export default function Signup() {
               id="password"
               name="password"
               className="border-none bg-transparent focus:border-0 focus:outline-none focus:ring-0"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
           <label
@@ -101,6 +107,8 @@ export default function Signup() {
               id="confirm-password"
               name="confirm-password"
               className="border-none bg-transparent focus:border-0 focus:outline-none focus:ring-0"
+              value={confPassword}
+              onChange={(e) => setConfPassword(e.target.value)}
             />
           </label>
           <label

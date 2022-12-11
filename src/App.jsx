@@ -111,12 +111,10 @@ function App() {
             path="/login"
             element={<Login />}
           />
-          <Route path="/users">
-            <Route
-              path=":username"
-              element={<Dashboard />}
-            />
-          </Route>
+          <Route
+            path="/dashboard"
+            element={<Dashboard />}
+          />
           <Route
             path="/register"
             element={<Register />}

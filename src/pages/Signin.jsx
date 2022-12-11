@@ -1,19 +1,32 @@
+import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import { ReactComponent as IconFormEmail } from "../assets/ico/ic-mail.svg";
 import { ReactComponent as IconFormLock } from "../assets/ico/ic-lock.svg";
 import { ReactComponent as Miolica } from "../assets/ico/Logo_full.svg";
-import { ReactComponent as IconShown } from "../assets/ico/ic-eye-shown.svg";
 
 export default function Signin() {
-  const [passwordShown, setpasswordShown] = useState(false);
-  const togglePasswordVisibility = () => {
-    setpasswordShown(!passwordShown);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
+
+  const Auth = async () => {
+    try {
+      await axios.post("http://localhost:88/api/v1/login", {
+        email,
+        password,
+      });
+      console.log(msg);
+      navigate("/dashboard");
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
   };
-  function funcLog() {
-    console.log("hello");
-  }
+
   return (
     <div className="bg-noise-white h-screen overflow-y-hidden">
       <Fade
@@ -27,7 +40,7 @@ export default function Signin() {
           className="form-group inset-0 flex w-[auto] flex-col items-center justify-evenly bg-transparent p-5"
           onSubmit={(e) => {
             e.preventDefault();
-            funcLog();
+            Auth();
           }}
         >
           <h1 className="my-6 self-center text-2xl font-semibold text-custom-black-700">
@@ -35,7 +48,7 @@ export default function Signin() {
           </h1>
           <label
             htmlFor="Email"
-            className="mb-2 flex w-1/4 items-center justify-start border-b-2 border-custom-black-900"
+            className="flex w-3/5 items-center justify-start border-b-2 border-custom-black-900"
           >
             <IconFormEmail className="mr-5 h-6 w-6 text-custom-black-900" />
 
@@ -44,22 +57,22 @@ export default function Signin() {
               placeholder="Email Address"
               id="email"
               className="border-none bg-transparent focus:ring-0"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
           <label
             htmlFor="Password"
-            className="mb-2 flex w-1/4 items-center justify-between border-b-2 border-custom-black-900"
+            className="flex w-3/5 items-center justify-start border-b-2 border-custom-black-900"
           >
             <IconFormLock className="mr-5 h-6 w-6 text-custom-black-900" />
             <input
-              type={passwordShown ? "text" : "password"}
+              type="password"
               placeholder="Password"
               id="email"
               className="self-start border-none bg-transparent focus:ring-0"
-            />
-            <IconShown
-              onClick={togglePasswordVisibility}
-              className="h-6 w-6 self-end text-custom-black-900"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
           <p>
