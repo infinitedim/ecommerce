@@ -1,0 +1,9 @@
+# Disabling lint to node modules and build folder
+node_modules
+build
+
+# Disabling lint to files
+vite.config.ts
+tailwind.config.cjs
+postcss.config.cjs
+prettier.config.cjs

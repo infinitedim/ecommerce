@@ -1,4 +1,9 @@
 {
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "env": {
     "browser": true,
     "es2021": true,
@@ -6,34 +11,29 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb",
+    "standard-with-typescript",
     "prettier",
     "plugin:prettier/recommended"
   ],
   "overrides": [
     {
-      "files": ["*.js", "*.jsx"]
+      "files": ["*.ts", "*.tsx"]
     }
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true
-    }
+    "project": "./tsconfig.json"
   },
-  "plugins": ["react", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react", "prettier", "n", "import", "promise", "react-hooks"],
   "rules": {
+    "react/react-in-jsx-scope": "off",
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
-    "react/react-in-jsx-scope": "off",
-    "no-alert": "error",
-    "no-console": "off",
-    "import/no-extraneous-dependencies": "off",
-    "no-param-reassign": "off",
-    "no-underscore-dangle": "off",
-    "import/prefer-default-export": "off",
+    "@typescript-eslint/quotes": ["error", "double"],
+    "@typescript-eslint/semi": ["error", "always"],
+    "@typescript-eslint/explicit-function-return-type": "off",
     "prettier/prettier": [
       "error",
       {
@@ -45,51 +45,6 @@
         "printWidth": 80,
         "singleAttributePerLine": true,
         "trailingComma": "all"
-      }
-    ],
-    "jsx-a11y/control-has-associated-label": [
-      2,
-      {
-        "labelAttributes": ["label"],
-        "controlComponents": ["CustomComponent"],
-        "ignoreElements": [
-          "audio",
-          "canvas",
-          "embed",
-          "input",
-          "textarea",
-          "tr",
-          "video"
-        ],
-        "ignoreRoles": [
-          "grid",
-          "listbox",
-          "menu",
-          "menubar",
-          "radiogroup",
-          "row",
-          "tablist",
-          "toolbar",
-          "tree",
-          "treegrid"
-        ],
-        "depth": 3
-      }
-    ],
-    "jsx-a11y/label-has-associated-control": [
-      2,
-      {
-        "labelComponents": ["CustomInputLabel"],
-        "labelAttributes": ["label"],
-        "controlComponents": ["CustomInput"],
-        "depth": 3
-      }
-    ],
-    "jsx-a11y/anchor-is-valid": [
-      "error",
-      {
-        "specialLink": ["hrefLeft", "hrefRight"],
-        "aspects": ["noHref", "invalidHref", "preferButton"]
       }
     ]
   }
