@@ -1,14 +1,14 @@
 export const LocalStorage = {
   get: <T>(key: string): T | null => {
-    const item: string | null = localStorage.getItem(key);
+    const item = localStorage.getItem(key);
 
-    if (item) {
+    if (item !== null) {
       return JSON.parse(item);
     }
 
     return null;
   },
-  set: (key: string, value: any) => {
+  set: (key: string, value) => {
     localStorage.setItem(key, JSON.stringify(value));
   },
   remove: (key: string) => {

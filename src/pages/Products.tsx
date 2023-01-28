@@ -1,8 +1,9 @@
-import { useRef, useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import Pagination from "@/components/Pagination";
 import ProductCard from "@/components/ProductCard";
-import { useGetAllProductsQuery } from "@/features/api";
+import { useGetAllProductsQuery } from "@/services";
 import { Search } from "@/assets";
 
 export default function Products(): JSX.Element {
@@ -10,21 +11,17 @@ export default function Products(): JSX.Element {
   const [products, setProducts] = useState<any[]>([]);
   const [filteredProduct, setFilteredProduct] = useState<any[]>([]);
   const [productName, setProductName] = useState<string>("");
-  const ref = useRef<null>(null);
   const { data } = useGetAllProductsQuery();
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      ref?.current?.continuousStart();
-
-      const response: any = await data;
+      const response = data;
 
       setProducts(response);
-      ref?.current?.complete();
       setIsLoading(false);
     };
 
-    fetchData();
+    void fetchData();
   }, [data]);
 
   useEffect(() => {
@@ -116,8 +113,7 @@ export default function Products(): JSX.Element {
                     productImage={product.image}
                   />
                 ))
-              : products &&
-                products?.map((product) => (
+              : products?.map((product) => (
                   <ProductCard
                     key={product.id}
                     id={product.id}

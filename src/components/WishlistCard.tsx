@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as ShoppingBag } from "../assets/ico/ic-shopping-bag.svg";
 
@@ -39,7 +38,7 @@ export default function WishlistCard({
         id="product-card"
         className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
       >
-        <LazyLoadImage
+        <img
           src={productImage}
           alt={`Product${" "}Image`}
           className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"

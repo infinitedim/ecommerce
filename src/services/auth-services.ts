@@ -35,6 +35,7 @@ const authServices = createApi({
     }),
     getProfile: builder.query<
       HttpResponse<{ name: string; email: string }>,
+      // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
       void
     >({
       query: () => ({

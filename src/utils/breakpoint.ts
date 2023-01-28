@@ -1,5 +1,7 @@
-export const getBreakpoint = () => {
-  const breakpoints = [
+import { BreakpointType } from "@/types";
+
+export const getBreakpoint = (): string => {
+  const breakpoints: BreakpointType[] = [
     {
       name: "xs",
       min: 0,
@@ -34,7 +36,7 @@ export const getBreakpoint = () => {
 
   const { innerWidth } = window;
 
-  const breakpoint = breakpoints.find(
+  const breakpoint: BreakpointType | undefined = breakpoints.find(
     (item) => innerWidth >= item.min && innerWidth <= item.max,
   );
 

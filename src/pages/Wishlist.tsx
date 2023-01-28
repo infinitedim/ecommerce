@@ -1,25 +1,22 @@
-import { useRef, useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Pagination, WishlistCard } from "@/import";
 import { Search } from "@/assets";
-import { useSortProductsQuery } from "@/features/api";
+import { useSortAllProductsQuery } from "@/services";
 
 export default function Products(): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [wishlists, setWishlists] = useState<any[]>([]);
-  const [filteredProduct, setFilteredProduct] = useState<any[]>([]);
+  const [wishlists, setWishlists] = useState<object[]>([]);
+  const [filteredProduct, setFilteredProduct] = useState<object[]>([]);
   const [wishlistName, setWishlistName] = useState<string>("");
-  const ref = useRef<null>(null);
-  const { data } = useSortProductsQuery();
+  const { data } = useSortAllProductsQuery();
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      ref?.current?.continuousStart();
-
-      const response: any = await data;
+      const response = data;
 
       setWishlists(response);
-      ref?.current?.complete();
       setIsLoading(false);
     };
 
@@ -97,7 +94,7 @@ export default function Products(): JSX.Element {
             duration={500}
           >
             {!isLoading && filteredProduct?.length > 0
-              ? filteredProduct?.map((product) => (
+              ? filteredProduct?.map((product: any) => (
                   <WishlistCard
                     key={product.id}
                     id={product.id}
@@ -106,8 +103,7 @@ export default function Products(): JSX.Element {
                     productImage={product.image}
                   />
                 ))
-              : wishlists &&
-                wishlists?.map((product) => (
+              : wishlists?.map((product: any) => (
                   <WishlistCard
                     key={product.id}
                     id={product.id}

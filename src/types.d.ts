@@ -13,6 +13,7 @@ export interface UseSliderTypes {
 }
 
 export interface UseSliderParameterTypes {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref: any;
   isLoadingData?: boolean | undefined;
 }
@@ -39,4 +40,19 @@ export type UserLoginRequestBodyTypes = Pick<
 export interface UserLoginResponseTypes {
   accessToken: string;
   refreshToken: string;
+}
+
+export interface BreakpointType {
+  name: string;
+  min: number;
+  max: number;
+}
+
+export interface AuthSliceTypes {
+  token: string;
+  isAuthenticated: boolean;
+  user: {
+    name: string;
+    email: string;
+  };
 }

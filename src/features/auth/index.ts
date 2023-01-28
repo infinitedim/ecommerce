@@ -1,3 +1,3 @@
-export * from "./authSlice";
+export * from "./slice";
 
-export { default as AuthReducer } from "./authSlice";
+export { default as AuthReducer } from "./slice";

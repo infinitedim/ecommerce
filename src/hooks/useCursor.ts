@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+import { useEffect } from "react";
 
 export function useCursor({ ref, onMouseMove }) {
   const mouseMove = (event) => {
@@ -10,10 +12,10 @@ export function useCursor({ ref, onMouseMove }) {
       ref.current.style.setProperty("--y", `${clientY}px`);
     }
     // eslint-disable-next-line no-unused-expressions
-    onMouseMove && onMouseMove();
+    onMouseMove?.();
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (ref?.current) window.addEventListener("mousemove", mouseMove);
 
     return () => {

@@ -1,9 +1,4 @@
 {
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
   "env": {
     "browser": true,
     "es2021": true,
@@ -17,7 +12,8 @@
   ],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"]
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@typescript-eslint/recommended"]
     }
   ],
   "parserOptions": {
@@ -34,6 +30,8 @@
     "@typescript-eslint/quotes": ["error", "double"],
     "@typescript-eslint/semi": ["error", "always"],
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": [
       "error",
       {
@@ -47,5 +45,16 @@
         "trailingComma": "all"
       }
     ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }

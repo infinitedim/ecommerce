@@ -1,17 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
-import { useGetProductByIdQuery } from "@/features/api";
+import { useGetProductByIdQuery } from "@/services/products-services";
 import { Comment, Facebook, Heart, Twitter } from "@/assets";
 
 export default function Product() {
   const { id } = useParams<string>();
-  const [product, setProduct] = useState<any[]>([]);
+  const [product, setProduct] = useState<any>([]);
   const { data } = useGetProductByIdQuery(id);
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const response: any = await data;
-
+      const response = await data;
       setProduct(response);
     };
 

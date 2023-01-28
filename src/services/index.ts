@@ -1,3 +1,3 @@
-export * from "./authServices";
+export * from "./auth-services";
 export * from "./base-query";
-export * from "./productsServices";
+export * from "./products-services";

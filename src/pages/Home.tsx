@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, useEffect, useState, Ref } from "react";
 import { Fade } from "react-awesome-reveal";
 import LoadingBar, { LoadingBarRef } from "react-top-loading-bar";
@@ -96,17 +97,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const fetchData = () => {
-      ref?.current?.continuousStart();
-
-      const response = data;
+    const fetchData = async (): Promise<void> => {
+      const response = await data;
 
       setProducts(response);
-      ref?.current?.complete();
       setIsLoading(false);
     };
 
-    fetchData();
+    void fetchData();
   }, [data]);
 
   return (

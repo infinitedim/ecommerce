@@ -18,7 +18,10 @@
     "format": "prettier --config .prettierrc.json --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "format:diff": "prettier --config .prettierrc.json --list-different \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "build:sass": "sass src/sass/root.scss:src/css/root.css --style compressed",
-    "build:tailwind": "tailwindcss build src/sass/root.scss -o src/css/tailwind.css"
+    "build:tailwind": "tailwindcss build src/sass/root.scss -o src/css/tailwind.css",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "browserslist": {
     "production": [
@@ -31,6 +34,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "lint-staged": {
+    "*.{css,less,scss,html,json,jsx,js,md,mdx}": [
+      "prettier --write ."
+    ],
+    "*.{ts, tsx}": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -46,6 +60,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
+    "@jridgewell/sourcemap-codec": "^1.4.14",
+    "@rollup/plugin-terser": "^0.4.0",
     "@svgr/rollup": "^6.5.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
@@ -53,9 +69,12 @@
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.49.0",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
+    "commitizen": "^4.3.0",
     "cssnano": "^5.1.14",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard-with-typescript": "^30.0.0",

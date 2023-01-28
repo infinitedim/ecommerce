@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable react/prop-types */
 import React from "react";
 import { Link, useLocation } from "react-router-dom";

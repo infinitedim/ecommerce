@@ -6,8 +6,8 @@ import {
 import { LocalStorage } from "@/utils";
 
 import { AuthReducer } from "@/features/auth";
-import AuthServices from "@/services/authServices";
-import ProductsServices from "@/services/productsServices";
+import AuthServices from "@/services/auth-services";
+import ProductsServices from "@/services/products-services";
 
 const reducers = combineReducers({
   auth: AuthReducer,
@@ -21,9 +21,8 @@ const createStore = (
   configureStore({
     reducer: reducers,
     middleware: (getDefaultMiddleware) => [
-      ...getDefaultMiddleware(),
+      ...getDefaultMiddleware().concat(ProductsServices.middleware),
       AuthServices.middleware,
-      ProductsServices.middleware,
     ],
     devTools: process.env.NODE_ENV !== "production",
     ...options,
@@ -36,7 +35,7 @@ export type RootState = ReturnType<typeof store.getState>;
 store.subscribe(() => {
   const { auth } = store.getState();
 
-  if (auth.token) {
+  if (auth.token !== "") {
     LocalStorage.set("token", auth.token);
   } else {
     LocalStorage.set("token", "");

@@ -5,16 +5,11 @@ import { Heart, ShopBag, Miolica, IO, User } from "@/assets";
 import { getBreakpoint } from "@/utils";
 import NavbarMenu from "./NavbarMenu";
 
-export default function Navbar({
-  isScrolled,
-}: {
-  isScrolled: any;
-}): JSX.Element {
+export default function Navbar({ isScrolled }): JSX.Element {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
   const renderLogo = (): JSX.Element => {
-    const logoClassName: string =
-      "navbar-logo h-[auto] w-[auto] text-custom-black-900";
+    const logoClassName = "navbar-logo h-[auto] w-[auto] text-custom-black-900";
     if (
       getBreakpoint() === "xs" ||
       getBreakpoint() === "sm" ||
@@ -26,7 +21,7 @@ export default function Navbar({
     return <Miolica className={logoClassName} />;
   };
 
-  const toggleBodyScroll = (isOpen: any): void => {
+  const toggleBodyScroll = (isOpen): void => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {

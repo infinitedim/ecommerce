@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
 
 interface menuItemsTypes {
@@ -5,13 +6,7 @@ interface menuItemsTypes {
   href: string;
 }
 
-export default function NavbarMenu({
-  state,
-  onClose,
-}: {
-  state: any;
-  onClose: any;
-}): JSX.Element {
+export default function NavbarMenu({ state, onClose }): JSX.Element {
   const menuItems: menuItemsTypes[] = [
     {
       title: "Home",

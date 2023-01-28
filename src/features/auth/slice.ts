@@ -1,14 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LocalStorage } from "../../utils";
-
-interface AuthSliceTypes {
-  token: string;
-  isAuthenticated: boolean;
-  user: {
-    name: string;
-    email: string;
-  };
-}
+import { LocalStorage } from "@/utils";
+import { AuthSliceTypes } from "@/types";
 
 const initialState: AuthSliceTypes = {
   token: LocalStorage.get<string>("token") ?? "",

@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { ArrowUp, Facebook, Instagram, Mail, Miolica, Twitter } from "@/assets";
 
 export default function Footer(): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [visible, setVisible] = useState<boolean>(false);
 
   const toggleVisible = (): void => {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { UseSliderParameterTypes, UseSliderTypes } from "@/types";
 import { useEffect, useState } from "react";
 
@@ -10,7 +11,7 @@ export function useSlider({
   const scrollNumber: number = window.innerWidth / 2 + 250;
 
   const next = (): void => {
-    const slider: any = ref?.current;
+    const slider = ref?.current;
 
     if (slider) {
       if (sliderPositionX <= sliderScrollWidth) {
@@ -18,6 +19,7 @@ export function useSlider({
         slider.scrollTo(sliderPositionX + scrollNumber, 0);
       }
 
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       if (slider.scrollLeft + scrollNumber >= sliderScrollWidth) {
         setSliderPositionX(slider.scrollWidth - slider.clientWidth);
         slider.scrollTo(slider.scrollWidth, 0);
@@ -26,7 +28,7 @@ export function useSlider({
   };
 
   const prev = (): void => {
-    const slider: any = ref?.current;
+    const slider = ref?.current;
 
     if (slider) {
       if (sliderPositionX >= 0) {
@@ -42,13 +44,13 @@ export function useSlider({
   };
 
   const handleScroll = (): void => {
-    const slider: any = ref?.current;
+    const slider = ref?.current;
 
     if (slider) setSliderPositionX(slider.scrollLeft);
   };
 
   useEffect(() => {
-    const slider: any = ref?.current;
+    const slider = ref?.current;
 
     if (slider) {
       slider.removeEventListener("scroll", handleScroll);

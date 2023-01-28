@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, lazy, Suspense, Ref } from "react";
+import React, { useState, useRef, useEffect, Suspense, Ref } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useCursor } from "@/hooks";
 import Loading from "@/pages/Loading";
@@ -26,7 +26,7 @@ export default function App(): JSX.Element {
   const cursorRef: Ref<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = (): void => {
-    const onEnter = (text: any): void => {
+    const onEnter = (text): void => {
       setShowText(text);
       cursorRef.current?.style.setProperty("--w", "5rem");
       cursorRef.current?.style.setProperty("--h", "5rem");
@@ -105,7 +105,7 @@ export default function App(): JSX.Element {
         className="custom-cursor opacity-0 mix-blend-difference"
         ref={cursorRef}
       >
-        <span className="absolute-center text-center">{showText || ""}</span>
+        <span className="absolute-center text-center">{showText ?? ""}</span>
       </div>
       <Suspense fallback={<Loading />}>
         <Routes>
