@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
+import { ProductTypes } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const productsServices = createApi({
@@ -7,14 +8,13 @@ const productsServices = createApi({
   }),
   reducerPath: "productsServices",
   endpoints: (builder) => ({
-    getAllProducts: builder.query({
+    getAllProducts: builder.query<ProductTypes[], void>({
       query: () => "/products",
     }),
-    sortAllProducts: builder.query({
+    sortAllProducts: builder.query<ProductTypes[], void>({
       query: () => "/products?sort=desc",
     }),
-    getProductById: builder.query({
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    getProductById: builder.query<ProductTypes, string | undefined>({
       query: (id) => `/products/${id}`,
     }),
   }),

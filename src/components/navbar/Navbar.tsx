@@ -88,17 +88,11 @@ export default function Navbar({ isScrolled }): JSX.Element {
             aria-label="user"
             className="tooltip flex items-center"
           >
-            <button
-              type="button"
-              className="user-dropdown"
-              aria-label="user-dropdown"
-            >
-              <User
-                className="h-[auto] w-[auto]"
-                stroke="text-custom-white-900"
-              />
-              <p className="tooltip-text">Profile</p>
-            </button>
+            <User
+              className="h-[auto] w-[auto]"
+              stroke="text-custom-white-900"
+            />
+            <p className="tooltip-text">Profile</p>
           </button>
           {/* End Icons */}
 

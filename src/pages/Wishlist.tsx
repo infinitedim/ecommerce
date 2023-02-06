@@ -1,29 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Pagination, WishlistCard } from "@/import";
 import { Search } from "@/assets";
 import { useSortAllProductsQuery } from "@/services";
+import { ProductTypes } from "@/types";
 
 export default function Products(): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [wishlists, setWishlists] = useState<object[]>([]);
+  const [wishlists, setWishlists] = useState<ProductTypes[]>([]);
   const [filteredProduct, setFilteredProduct] = useState<object[]>([]);
   const [wishlistName, setWishlistName] = useState<string>("");
   const { data } = useSortAllProductsQuery();
 
   useEffect(() => {
-    const fetchData = async (): Promise<void> => {
-      const response = data;
-
-      setWishlists(response);
+    if (data) {
+      setWishlists(data);
       setIsLoading(false);
-    };
-
-    void fetchData();
+    }
   }, [data]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (wishlists?.length === 0) return;
 
     const filteredByKeyword = wishlists?.filter((wishlist) =>

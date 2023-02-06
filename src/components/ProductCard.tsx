@@ -42,7 +42,7 @@ export default function ProductCard({
       >
         <img
           src={productImage}
-          alt={`Product${" "}Image`}
+          alt={productName}
           className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"
         />
       </Link>

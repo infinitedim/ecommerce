@@ -1,30 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Fade } from "react-awesome-reveal";
 import Pagination from "@/components/Pagination";
 import ProductCard from "@/components/ProductCard";
 import { useGetAllProductsQuery } from "@/services";
 import { Search } from "@/assets";
+import { ProductTypes } from "@/types";
 
 export default function Products(): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<ProductTypes[]>([]);
   const [filteredProduct, setFilteredProduct] = useState<any[]>([]);
   const [productName, setProductName] = useState<string>("");
   const { data } = useGetAllProductsQuery();
 
   useEffect(() => {
-    const fetchData = async (): Promise<void> => {
-      const response = data;
-
-      setProducts(response);
+    if (data) {
+      setProducts(data);
       setIsLoading(false);
-    };
-
-    void fetchData();
+    }
   }, [data]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (products?.length === 0) return;
 
     const filteredByKeyword = products?.filter((product) =>
@@ -89,13 +86,14 @@ export default function Products(): JSX.Element {
         <div className="products-container grid w-[70%] grid-cols-3 grid-rows-3">
           {isLoading && (
             <>
-              <ProductCard isSkeleton />
-              <ProductCard isSkeleton />
-              <ProductCard isSkeleton />
-              <ProductCard isSkeleton />
-              <ProductCard isSkeleton />
-              <ProductCard isSkeleton />
-              <ProductCard isSkeleton />
+              {[0, 1, 2, 3, 4, 5].map((num) => {
+                return (
+                  <ProductCard
+                    isSkeleton
+                    key={num}
+                  />
+                );
+              })}
             </>
           )}
           <Fade
@@ -116,7 +114,7 @@ export default function Products(): JSX.Element {
               : products?.map((product) => (
                   <ProductCard
                     key={product.id}
-                    id={product.id}
+                    id={product.id.toString()}
                     productName={product.title}
                     productPrice={product.price}
                     productImage={product.image}

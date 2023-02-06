@@ -97,14 +97,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const fetchData = async (): Promise<void> => {
-      const response = await data;
+    // const fetchData = async (): Promise<void> => {
+    //   const response = await data;
 
-      setProducts(response);
+    //   setProducts(response);
+    //   setIsLoading(false);
+    // };
+
+    // void fetchData();
+    if (data) {
+      setProducts(data);
       setIsLoading(false);
-    };
-
-    void fetchData();
+    }
   }, [data]);
 
   return (

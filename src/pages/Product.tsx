@@ -3,19 +3,25 @@ import { useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useGetProductByIdQuery } from "@/services/products-services";
 import { Comment, Facebook, Heart, Twitter } from "@/assets";
+import { ProductTypes } from "@/types";
 
 export default function Product() {
   const { id } = useParams<string>();
-  const [product, setProduct] = useState<any>([]);
-  const { data } = useGetProductByIdQuery(id);
+  const [product, setProduct] = useState<ProductTypes | null>(null);
+  const { data } = useGetProductByIdQuery(id, {
+    skip: !id,
+  });
 
   useEffect(() => {
-    const fetchData = async (): Promise<void> => {
-      const response = await data;
-      setProduct(response);
-    };
+    // const fetchData = async (): Promise<void> => {
+    //   const response = await data;
+    //   setProduct(response);
+    // };
 
-    void fetchData();
+    // void fetchData();
+    if (data) {
+      setProduct(data);
+    }
   }, [data]);
 
   return (
@@ -24,7 +30,7 @@ export default function Product() {
         <div className="container mx-auto px-5 py-24">
           <div className="mx-auto flex flex-wrap lg:w-4/5">
             <img
-              alt="ecommerce"
+              alt={product?.title}
               className="h-64 w-full rounded object-cover object-center lg:h-auto lg:w-1/2"
               src={product?.image}
             />

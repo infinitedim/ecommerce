@@ -20,36 +20,35 @@
     "build:sass": "sass src/sass/root.scss:src/css/root.css --style compressed",
     "build:tailwind": "tailwindcss build src/sass/root.scss -o src/css/tailwind.css",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
-    "prepare": "husky install",
-    "commit": "cz"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "prepare": "npx husky install",
+    "commit": "git add . && cz"
   },
   "lint-staged": {
-    "*.{css,less,scss,html,json,jsx,js,md,mdx}": [
-      "prettier --write ."
-    ],
-    "*.{ts, tsx}": "eslint --fix"
+    "**/*.{html,css,scss,less,json,js,jsx,ts,tsx,md,mdx}\"": [
+      "prettier --config .prettierrc.json --write \"**/*.{html,css,scss,less,json,js,jsx,ts,tsx,md,mdx}\""
+    ]
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "browserslist": {
+    "production": [
+      ">0.01%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      ">0.01%",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@reduxjs/toolkit": "^1.9.0",
-    "axios": "^1.2.1",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-awesome-reveal": "^4.1.0",
@@ -62,7 +61,6 @@
     "@babel/core": "^7.20.5",
     "@jridgewell/sourcemap-codec": "^1.4.14",
     "@rollup/plugin-terser": "^0.4.0",
-    "@svgr/rollup": "^6.5.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.8",
