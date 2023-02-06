@@ -3,5 +3,5 @@
 }
 
 @mixin popupContent {
-  @apply bg-custom-white-900 w-full max-h-[80%];
+  @apply max-h-[80%] w-full bg-custom-white-900;
 }

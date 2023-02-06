@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
-@import './variables';
+@import "./variables";
 
 * {
   margin: 0;
@@ -29,39 +29,39 @@ select:-webkit-autofill:focus {
 }
 
 @font-face {
-  font-family: 'Neue Machina';
+  font-family: "Neue Machina";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: local('Neue Machina'), local('NeueMachina'),
-    url('../fonts/NeueMachina-Regular.otf') format('opentype');
+  src: local("Neue Machina"), local("NeueMachina"),
+    url("../fonts/NeueMachina-Regular.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'Neue Machina';
+  font-family: "Neue Machina";
   font-style: normal;
   font-display: swap;
   font-weight: 900;
-  src: local('Neue Machina'), local('NeueMachina'),
-    url('../fonts/NeueMachina-Ultrabold.otf') format('opentype');
+  src: local("Neue Machina"), local("NeueMachina"),
+    url("../fonts/NeueMachina-Ultrabold.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'Syne';
+  font-family: "Syne";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: local('Syne'), local('Syne'),
-    url('../fonts/Syne-Regular.ttf') format('truetype');
+  src: local("Syne"), local("Syne"),
+    url("../fonts/Syne-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Syne';
+  font-family: "Syne";
   font-style: normal;
   font-display: swap;
   font-weight: 900;
-  src: local('Syne'), local('Syne'),
-    url('../fonts/Syne-UltraBold.ttf') format('truetype');
+  src: local("Syne"), local("Syne"),
+    url("../fonts/Syne-UltraBold.ttf") format("truetype");
 }
 
 .custom-cursor {
@@ -72,13 +72,13 @@ select:-webkit-autofill:focus {
   --scale: 1;
 
   @apply transition-all duration-100 ease-linear;
-  @apply hidden lg:block fixed z-[9999] pointer-events-none rounded-full text-xs text-slate-900 font-semibold;
+  @apply pointer-events-none fixed z-[9999] hidden rounded-full text-xs font-semibold text-slate-900 lg:block;
   top: var(--y);
   left: var(--x);
   width: var(--w);
   height: var(--h);
   transform: scale(var(--scale));
-  background-color: theme('colors.slate.50');
+  background-color: theme("colors.slate.50");
 
   &.hover {
     @apply border border-slate-900;
@@ -94,12 +94,12 @@ button:hover ~ .custom-cursor {
 }
 
 .app-container {
-  @apply w-full max-w-[1440px] mx-auto px-6;
+  @apply mx-auto w-full max-w-[1440px] px-6;
 }
 
 @layer base {
   body {
-    @apply text-custom-black-400 tracking-tight text-base font-sans;
+    @apply font-sans text-base tracking-tight text-custom-black-400;
     @apply bg-custom-white-900;
   }
 
@@ -113,7 +113,7 @@ button:hover ~ .custom-cursor {
 
     &,
     input {
-      @apply disabled:opacity-50 disabled:cursor-not-allowed;
+      @apply disabled:cursor-not-allowed disabled:opacity-50;
     }
   }
 }
@@ -125,27 +125,27 @@ button:hover ~ .custom-cursor {
 
     &-text {
       transition: all 0.3s ease-in-out;
-      @apply py-1.5 px-4 text-sm bg-custom-black-500 whitespace-nowrap text-custom-white-900 absolute z-[5] opacity-0 invisible;
+      @apply invisible absolute z-[5] whitespace-nowrap bg-custom-black-500 py-1.5 px-4 text-sm text-custom-white-900 opacity-0;
       bottom: -20px;
       right: -55%;
 
       &::before {
-        content: '';
-        @apply w-3 h-3 bg-custom-black-500 absolute z-[5] -top-[10%];
+        content: "";
+        @apply absolute -top-[10%] z-[5] h-3 w-3 bg-custom-black-500;
         right: 15px;
         transform: rotate(45deg);
       }
 
       &-center {
         transition: all 0.3s ease-in-out;
-        @apply py-1.5 px-4 text-sm bg-custom-black-500 whitespace-nowrap text-custom-white-900 absolute z-[5] opacity-0 invisible;
+        @apply invisible absolute z-[5] whitespace-nowrap bg-custom-black-500 py-1.5 px-4 text-sm text-custom-white-900 opacity-0;
         bottom: -20px;
         left: 50%;
         transform: translateX(-50%);
 
         &::before {
-          content: '';
-          @apply w-3 h-3 bg-custom-black-500 absolute z-[5] -top-[10%];
+          content: "";
+          @apply absolute -top-[10%] z-[5] h-3 w-3 bg-custom-black-500;
           left: 50%;
           transform: translateX(-50%) rotate(45deg);
         }
@@ -153,13 +153,13 @@ button:hover ~ .custom-cursor {
 
       &-left {
         transition: all 0.3s ease-in-out;
-        @apply py-1.5 px-4 text-sm bg-custom-black-500 whitespace-nowrap text-custom-white-900 absolute z-[5] opacity-0 invisible;
+        @apply invisible absolute z-[5] whitespace-nowrap bg-custom-black-500 py-1.5 px-4 text-sm text-custom-white-900 opacity-0;
         bottom: -20px;
         left: -55%;
 
         &::before {
-          content: '';
-          @apply w-3 h-3 bg-custom-black-500 absolute z-[5] -top-[10%];
+          content: "";
+          @apply absolute -top-[10%] z-[5] h-3 w-3 bg-custom-black-500;
           left: 15px;
           transform: rotate(45deg);
         }
@@ -171,7 +171,7 @@ button:hover ~ .custom-cursor {
         &,
         &-center,
         &-left {
-          @apply opacity-100 visible delay-700 -bottom-[50px];
+          @apply visible -bottom-[50px] opacity-100 delay-700;
         }
       }
     }
@@ -180,13 +180,13 @@ button:hover ~ .custom-cursor {
   /* Button */
   .btn {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    @apply py-3 px-6 bg-custom-black-900 text-white font-medium text-sm md:text-base border-2 border-transparent;
+    @apply border-2 border-transparent bg-custom-black-900 py-3 px-6 text-sm font-medium text-white md:text-base;
     @apply hover:bg-neutral-700;
-    @apply focus:bg-transparent focus:text-custom-black-900 focus:border-custom-black-900;
+    @apply focus:border-custom-black-900 focus:bg-transparent focus:text-custom-black-900;
 
     &-outline {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      @apply py-3 px-6 bg-transparent text-black border border-custom-black-900 font-medium text-sm md:text-base;
+      @apply border border-custom-black-900 bg-transparent py-3 px-6 text-sm font-medium text-black md:text-base;
       @apply hover:bg-neutral-200;
       @apply focus:bg-custom-black-900 focus:text-white;
     }
@@ -199,30 +199,30 @@ button:hover ~ .custom-cursor {
   /* Navbar */
   .navbar {
     @include defaultTransition();
-    @apply bg-transparent w-full absolute top-0 left-0 z-50;
+    @apply absolute top-0 left-0 z-50 w-full bg-transparent;
 
     &.scrolled {
       animation: navbar-scrolled 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      @apply bg-custom-white-900 fixed top-0 border-b border-custom-white-800;
+      @apply fixed top-0 border-b border-custom-white-800 bg-custom-white-900;
     }
 
     &-container {
-      @apply h-[75px] w-full max-w-[1440px] flex items-center justify-between px-6 mx-auto;
+      @apply mx-auto flex h-[75px] w-full max-w-[1440px] items-center justify-between px-6;
     }
 
     &-menu {
       @include defaultTransition();
-      @apply absolute z-[-5] left-0 top-0 w-full h-screen opacity-0 invisible overflow-hidden;
-      @apply md:static md:w-auto md:z-[unset] md:h-auto md:opacity-100 md:visible;
+      @apply invisible absolute left-0 top-0 z-[-5] h-screen w-full overflow-hidden opacity-0;
+      @apply md:visible md:static md:z-[unset] md:h-auto md:w-auto md:opacity-100;
 
       &.active {
-        @apply opacity-100 visible bg-black bg-opacity-25 md:bg-transparent;
+        @apply visible bg-black bg-opacity-25 opacity-100 md:bg-transparent;
       }
 
       > ul {
         @include defaultTransition();
-        @apply absolute z-10 -right-[275px] top-0 h-screen overflow-y-auto bg-custom-white-900 w-full max-w-[250px] pt-[75px];
-        @apply md:static md:right-[unset] md:top-[unset] md:bg-transparent md:w-auto md:max-w-[unset] md:h-auto md:flex md:items-center md:gap-6 md:pt-0;
+        @apply absolute -right-[275px] top-0 z-10 h-screen w-full max-w-[250px] overflow-y-auto bg-custom-white-900 pt-[75px];
+        @apply md:static md:right-[unset] md:top-[unset] md:flex md:h-auto md:w-auto md:max-w-[unset] md:items-center md:gap-6 md:bg-transparent md:pt-0;
 
         &.active {
           @apply right-0;
@@ -231,18 +231,18 @@ button:hover ~ .custom-cursor {
         > li {
           > a {
             @include defaultTransition();
-            @apply py-3 px-6 block relative;
+            @apply relative block py-3 px-6;
             @apply md:py-1 md:px-1 lg:px-2;
 
             &::before {
-              content: '';
+              content: "";
               @include defaultTransition();
-              @apply absolute z-10 bottom-1.5 left-6 w-0 h-[.1rem] bg-custom-black-900;
-              @apply md:left-1 lg:left-2 md:bottom-0;
+              @apply absolute bottom-1.5 left-6 z-10 h-[.1rem] w-0 bg-custom-black-900;
+              @apply md:left-1 md:bottom-0 lg:left-2;
             }
 
             &.active {
-              @apply text-custom-black-900 cursor-not-allowed;
+              @apply cursor-not-allowed text-custom-black-900;
 
               &::before {
                 @apply w-8;
@@ -254,7 +254,7 @@ button:hover ~ .custom-cursor {
     }
 
     &-burger {
-      @apply cursor-pointer relative;
+      @apply relative cursor-pointer;
       @apply transition-all duration-300 ease-in-out;
       @apply flex items-center justify-center;
       @apply h-10 w-10;
@@ -262,7 +262,7 @@ button:hover ~ .custom-cursor {
 
       > span {
         @include defaultTransition();
-        @apply w-6 h-[0.1rem] bg-custom-black-900 absolute;
+        @apply absolute h-[0.1rem] w-6 bg-custom-black-900;
 
         &:nth-child(1) {
           animation: navbar-burger-icon-1 0.5s cubic-bezier(0.4, 0, 0.2, 1)
@@ -272,7 +272,7 @@ button:hover ~ .custom-cursor {
         &:nth-child(3) {
           animation: navbar-burger-icon-3 0.5s cubic-bezier(0.4, 0, 0.2, 1)
             forwards;
-          @apply w-4 ml-2;
+          @apply ml-2 w-4;
         }
       }
 
@@ -297,27 +297,27 @@ button:hover ~ .custom-cursor {
   /* Popup */
   .popup {
     @include defaultTransition();
-    @apply bg-black bg-opacity-50 fixed opacity-0 invisible top-0 left-0 w-full h-screen flex items-center justify-center z-[60];
+    @apply invisible fixed top-0 left-0 z-[60] flex h-screen w-full items-center justify-center bg-black bg-opacity-50 opacity-0;
 
     &.active {
-      @apply opacity-100 visible;
+      @apply visible opacity-100;
     }
 
     &-bottom {
       @include defaultTransition();
-      @apply bg-black bg-opacity-50 fixed opacity-0 invisible top-0 left-0 w-full h-screen flex items-end md:items-center justify-center z-[60];
+      @apply invisible fixed top-0 left-0 z-[60] flex h-screen w-full items-end justify-center bg-black bg-opacity-50 opacity-0 md:items-center;
 
       .popup-content {
         @include popupContent;
         @include defaultTransition();
-        @apply transform translate-y-5;
+        @apply translate-y-5 transform;
       }
 
       &.active {
-        @apply opacity-100 visible;
+        @apply visible opacity-100;
 
         .popup-content {
-          @apply transform translate-y-0;
+          @apply translate-y-0 transform;
         }
       }
     }
@@ -387,20 +387,20 @@ button:hover ~ .custom-cursor {
 /* Custom Background */
 .bg-noise {
   &-pink {
-    background-image: url('../assets/img/bg-noise-pink.jpg');
+    background-image: url("../assets/img/bg-noise-pink.jpg");
     background-size: cover;
   }
 
   &-white {
-    background-image: url('../assets/img/bg-noise-white.jpg');
+    background-image: url("../assets/img/bg-noise-white.jpg");
     background-size: cover;
   }
 
   &-black {
-    background-image: url('../assets/img/bg-noise-black.jpg');
+    background-image: url("../assets/img/bg-noise-black.jpg");
     background-size: cover;
   }
 }
 
-@import './animations';
-@import './loadings';
+@import "./animations";
+@import "./loadings";
