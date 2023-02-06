@@ -64,6 +64,24 @@ select:-webkit-autofill:focus {
     url("../fonts/Syne-UltraBold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Syne";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: local("Poppins"), local("Poppins"),
+    url("../fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: local("Poppins"), local("Poppins"),
+    url("../fonts/Poppins-ExtraBold.ttf") format("truetype");
+}
+
 .custom-cursor {
   --x: 50%;
   --y: 50%;

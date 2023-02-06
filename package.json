@@ -20,8 +20,9 @@
     "build:sass": "sass src/sass/root.scss:src/css/root.css --style compressed",
     "build:tailwind": "tailwindcss build src/sass/root.scss -o src/css/tailwind.css",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
-    "prepare": "npx husky install",
-    "commit": "git add . && cz"
+    "prepare": "husky install",
+    "commit": "git add . && cz",
+    "push": "yarn commit && git push origin main"
   },
   "lint-staged": {
     "**/*.{html,css,scss,less,json,js,jsx,ts,tsx,md,mdx}\"": [
@@ -49,7 +50,6 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@reduxjs/toolkit": "^1.9.0",
-    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-awesome-reveal": "^4.1.0",
     "react-dom": "^18.2.0",
@@ -61,6 +61,7 @@
     "@babel/core": "^7.20.5",
     "@jridgewell/sourcemap-codec": "^1.4.14",
     "@rollup/plugin-terser": "^0.4.0",
+    "@svgr/rollup": "^6.5.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.8",
@@ -82,6 +83,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^8.0.3",
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",

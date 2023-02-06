@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, ShopBag, Miolica, IO, User } from "@/assets";
 import { getBreakpoint } from "@/utils";
 import NavbarMenu from "./NavbarMenu";
+import { Heart, ShopBag, Miolica, IO, User } from "@/assets";
 
 export default function Navbar({ isScrolled }): JSX.Element {
   const [isMenuOpened, setIsMenuOpened] = useState(false);

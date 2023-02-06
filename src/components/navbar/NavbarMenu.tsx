@@ -1,13 +1,9 @@
 /* eslint-disable react/prop-types */
+import { MenuItemsTypes } from "@/types";
 import { NavLink } from "react-router-dom";
 
-interface menuItemsTypes {
-  title: string;
-  href: string;
-}
-
 export default function NavbarMenu({ state, onClose }): JSX.Element {
-  const menuItems: menuItemsTypes[] = [
+  const menuItems: MenuItemsTypes[] = [
     {
       title: "Home",
       href: "/",
@@ -32,7 +28,7 @@ export default function NavbarMenu({ state, onClose }): JSX.Element {
         }}
       >
         {menuItems.flatMap(
-          (menu: menuItemsTypes): JSX.Element => (
+          (menu: MenuItemsTypes): JSX.Element => (
             <li key={menu.title}>
               <NavLink
                 id="hover-link"

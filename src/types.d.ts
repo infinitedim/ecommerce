@@ -69,3 +69,8 @@ export interface ProductTypes {
     count: number;
   };
 }
+
+export interface MenuItemsTypes {
+  title: string;
+  href: string;
+}
