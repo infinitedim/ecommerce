@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import { UseSliderParameterTypes, UseSliderTypes } from "@/types";
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import { UseSliderParameterTypes, UseSliderTypes } from "@/interfaces";
 
 export function useSlider({
   ref,

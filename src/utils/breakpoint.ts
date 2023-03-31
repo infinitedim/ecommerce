@@ -1,4 +1,4 @@
-import { BreakpointType } from "@/types";
+import { BreakpointType } from "@/interfaces";
 
 export const getBreakpoint = (): string => {
   const breakpoints: BreakpointType[] = [

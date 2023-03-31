@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
-import { ProductTypes } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ProductTypes } from "@/interfaces";
 
 const productsServices = createApi({
   baseQuery: fetchBaseQuery({

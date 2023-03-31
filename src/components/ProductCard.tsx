@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable react/prop-types */
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Heart } from "@/assets";
-import { ProductCardParameterTypes } from "@/types";
+import { Heart } from "@/components/atoms";
+import { ProductCardParameterTypes } from "@/interfaces";
 
 export default function ProductCard({
   isSkeleton,
@@ -11,9 +10,7 @@ export default function ProductCard({
   productPrice,
   productImage,
   id,
-}: ProductCardParameterTypes): JSX.Element {
-  const location = useLocation();
-
+}: ProductCardParameterTypes) {
   // Skeleton for product card
   if (isSkeleton) {
     return (
@@ -36,24 +33,22 @@ export default function ProductCard({
   return (
     <div className="min-w-[250px] p-4">
       <Link
-        to={location.pathname === "/" ? `products/${id}` : `${id}`}
+        href={`/product/${id}`}
         id="product-card"
         className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
       >
-        <img
-          src={productImage}
-          alt={productName}
+        <Image
+          src={productImage as string}
+          alt={productName as string}
           className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"
+          quality={100}
         />
       </Link>
       <div
         id="product-card-detail"
         className="max-w-250 flex flex-row items-center justify-between gap-4 py-6"
       >
-        <Link
-          to={location.pathname === "/" ? `products/${id}` : `${id}`}
-          id="product-card"
-        >
+        <Link href={`products/${id}`} id="product-card">
           <h3 className="text-base font-semibold text-custom-black-900 line-clamp-1">
             {productName}
           </h3>

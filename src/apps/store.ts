@@ -6,8 +6,7 @@ import {
 import { LocalStorage } from "@/utils";
 
 import { AuthReducer } from "@/features/auth";
-import AuthServices from "@/services/auth-services";
-import ProductsServices from "@/services/products-services";
+import { AuthServices, ProductsServices } from "@/services";
 
 const reducers = combineReducers({
   auth: AuthReducer,

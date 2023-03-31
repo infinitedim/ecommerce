@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState, useMemo } from "react";
 import { Fade } from "react-awesome-reveal";
-import { Pagination, WishlistCard } from "@/import";
-import { Search } from "@/assets";
 import { useSortAllProductsQuery } from "@/services";
-import { ProductTypes } from "@/types";
+import { ProductTypes } from "@/interfaces";
+import WishlistCard from "@/components/WishlistCard";
+import { Search } from "@/components/atoms";
 
-export default function Products(): JSX.Element {
+export default function Products() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [wishlists, setWishlists] = useState<ProductTypes[]>([]);
   const [filteredProduct, setFilteredProduct] = useState<object[]>([]);
@@ -85,11 +85,7 @@ export default function Products(): JSX.Element {
               <WishlistCard isSkeleton />
             </>
           )}
-          <Fade
-            cascade
-            triggerOnce
-            duration={500}
-          >
+          <Fade cascade triggerOnce duration={500}>
             {!isLoading && filteredProduct?.length > 0
               ? filteredProduct?.map((product: any) => (
                   <WishlistCard
@@ -112,7 +108,6 @@ export default function Products(): JSX.Element {
           </Fade>
         </div>
       </div>
-      <Pagination />
     </div>
   );
 }

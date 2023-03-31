@@ -1,8 +1,7 @@
 {
-  "name": "e-commerce",
+  "name": "miolica",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "0.0.2",
   "readme": "./README.md",
   "license": "MIT",
   "repository": {
@@ -10,11 +9,10 @@
     "url": "https://github.com/infinitedim/ecommerce.git"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint --cache \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
-    "lint:fix": "eslint --fix \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx,md,mdx}\" --fix",
     "format": "prettier --config .prettierrc.json --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "format:diff": "prettier --config .prettierrc.json --list-different \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "build:sass": "sass src/sass/root.scss:src/css/root.css --style compressed",
@@ -50,18 +48,18 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@reduxjs/toolkit": "^1.9.0",
+    "class-variance-authority": "^0.4.0",
+    "clsx": "^1.2.1",
+    "lucide-react": "^0.129.0",
+    "next": "^13.2.4",
     "react": "^18.2.0",
     "react-awesome-reveal": "^4.1.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.4.3",
-    "react-top-loading-bar": "^2.3.1"
+    "react-top-loading-bar": "^2.3.1",
+    "tailwind-merge": "^1.11.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.5",
-    "@jridgewell/sourcemap-codec": "^1.4.14",
-    "@rollup/plugin-terser": "^0.4.0",
-    "@svgr/rollup": "^6.5.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.8",
@@ -69,16 +67,16 @@
     "@types/react-dom": "^18.0.7",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.49.0",
-    "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
     "commitizen": "^4.3.0",
     "cssnano": "^5.1.14",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.0.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "^13.2.4",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-config-standard-with-typescript": "^30.0.0",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.1",
@@ -89,10 +87,6 @@
     "prettier-plugin-tailwindcss": "^0.1.13",
     "sass": "^1.56.0",
     "tailwindcss": "^3.2.2",
-    "typescript": "*",
-    "vite": "^3.2.0",
-    "vite-plugin-pwa": "^0.13.3",
-    "workbox-build": "^6.5.4",
-    "workbox-window": "^6.5.4"
+    "typescript": "*"
   }
 }

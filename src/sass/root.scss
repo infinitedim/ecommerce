@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
-@import "./variables";
+@import "./mixins";
+@import "./animations";
+@import "./loadings";
 
 * {
   margin: 0;
@@ -419,6 +421,3 @@ button:hover ~ .custom-cursor {
     background-size: cover;
   }
 }
-
-@import "./animations";
-@import "./loadings";

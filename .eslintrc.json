@@ -1,61 +1,95 @@
 {
+  "$schema": "https://json.schemastore.org/eslintrc",
   "env": {
     "browser": true,
     "es2021": true,
     "node": true
   },
   "extends": [
+    "next/core-web-vitals",
     "plugin:react/recommended",
-    "standard-with-typescript",
     "prettier",
+    "airbnb",
+    "next",
     "plugin:prettier/recommended"
   ],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@typescript-eslint/recommended"]
-    }
-  ],
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "prettier", "n", "import", "promise", "react-hooks"],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "react",
+    "react-hooks",
+    "import",
+    "promise",
+    "jsx-a11y"
+  ],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "quotes": ["error", "double"],
-    "semi": ["error", "always"],
-    "@typescript-eslint/quotes": ["error", "double"],
-    "@typescript-eslint/semi": ["error", "always"],
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/restrict-template-expressions": "off",
-    "prettier/prettier": [
-      "error",
+    "no-console": 0,
+    "quotes": [2, "double"],
+    "semi": [2, "always"],
+    "@next/next/no-html-link-for-pages": [2, "src/app"],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/quotes": [2, "double"],
+    "@typescript-eslint/semi": [2, "always"],
+    "@typescript-eslint/strict-boolean-expressions": 0,
+    "import/extensions": 0,
+    "import/no-cycle": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-anonymous-default-export": 0,
+    "import/prefer-default-export": 0,
+    "jsx-a11y/label-has-associated-control": [
+      2,
       {
-        "semi": true,
-        "jsxSingleQuote": false,
-        "singleQuote": false,
+        "labelComponents": ["CustomInputLabel"],
+        "labelAttributes": ["label"],
+        "controlComponents": ["CustomInput"],
+        "depth": 3
+      }
+    ],
+    "prettier/prettier": [
+      2,
+      {
         "endOfLine": "auto",
-        "tabWidth": 2,
+        "jsxSingleQuote": false,
         "printWidth": 80,
-        "singleAttributePerLine": true,
+        "semi": true,
+        "singleAttributesPerLine": true,
+        "singleQuote": false,
+        "tabWidth": 2,
         "trailingComma": "all"
       }
-    ]
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": [
+          "function-declaration",
+          "function-expression",
+          "arrow-function"
+        ],
+        "unnamedComponents": ["function-expression", "arrow-function"]
+      }
+    ],
+    "react-hooks/exhaustive-deps": 0,
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/jsx-no-bind": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/require-default-props": 0
   },
   "settings": {
     "react": {
       "version": "detect"
-    },
-    "import/resolver": {
-      "node": {
-        "paths": ["src"],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
     }
   }
 }

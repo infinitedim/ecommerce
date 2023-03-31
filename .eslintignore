@@ -1,12 +1,7 @@
-# Disabling lint to node modules and build folder
-node_modules
+# Ignore artifacts:
+package-lock.json
+yarn.lock
 build
 coverage
 dist
-
-# Disabling lint to files
-vite.config.ts
-tailwind.config.cjs
-postcss.config.cjs
-prettier.config.cjs
-*.md
+node_modules

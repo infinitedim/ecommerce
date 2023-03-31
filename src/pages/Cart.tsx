@@ -1,8 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, Trash, Minus, Plus } from "@/assets";
+import { ArrowLeft, Minus, Plus, Trash } from "@/components/atoms";
 
-export default function Cart(): JSX.Element {
+export default function Cart() {
   const [quantity, setQuantity] = useState<number>(0);
 
   return (
@@ -31,11 +32,7 @@ export default function Cart(): JSX.Element {
           <div className="-mx-8 flex items-center px-6 py-5 hover:bg-gray-100">
             <div className="flex w-2/5">
               <div className="w-20">
-                <img
-                  className="h-24"
-                  src=""
-                  alt=""
-                />
+                <Image className="h-24" src="" alt="" />
               </div>
               <div className="ml-4 flex flex-grow flex-col justify-between">
                 <span className="text-md font-bold text-custom-black-900">
@@ -43,7 +40,7 @@ export default function Cart(): JSX.Element {
                 </span>
                 <span className="text-xs">Xiaomi</span>
                 <Link
-                  to="#"
+                  href="/"
                   className="flex items-center justify-start text-xs font-semibold text-custom-black-500"
                 >
                   <Trash />
@@ -73,7 +70,7 @@ export default function Cart(): JSX.Element {
           </div>
 
           <Link
-            to="/products"
+            href="/products"
             className="mt-10 flex items-center justify-start text-sm font-semibold text-custom-black-900"
           >
             <ArrowLeft />
@@ -81,10 +78,7 @@ export default function Cart(): JSX.Element {
           </Link>
         </div>
 
-        <div
-          id="summary"
-          className="w-1/4 px-8 py-10"
-        >
+        <div id="summary" className="w-1/4 px-8 py-10">
           <h1 className="border-b pb-8 text-2xl font-semibold">
             Order Summary
           </h1>
@@ -113,11 +107,8 @@ export default function Cart(): JSX.Element {
               <span>Total cost</span>
               <span>$600</span>
             </div>
-            <Link to="/checkout">
-              <button
-                className="btn tooltip w-full"
-                type="button"
-              >
+            <Link href="/checkout">
+              <button className="btn tooltip w-full" type="button">
                 Checkout
                 <p className="tooltip-text-center">Checkout</p>
               </button>

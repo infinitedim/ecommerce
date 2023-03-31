@@ -1,4 +1,6 @@
-export const LocalStorage = {
+import type { LocalStorageTypes } from "@/interfaces";
+
+export const LocalStorage: LocalStorageTypes = {
   get: <T>(key: string): T | null => {
     const item = localStorage.getItem(key);
 

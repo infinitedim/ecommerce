@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LocalStorage } from "@/utils";
-import { AuthSliceTypes } from "@/types";
+import { AuthSliceTypes } from "@/interfaces";
 
 const initialState: AuthSliceTypes = {
   token: LocalStorage.get<string>("token") ?? "",
@@ -23,6 +23,7 @@ const AuthSlice = createSlice({
       ...state,
       user: payload,
     }),
+    // eslint-disable-next-line no-unused-vars
     logout: (state, action: PayloadAction) => ({
       ...state,
       token: "",

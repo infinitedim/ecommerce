@@ -1,10 +1,17 @@
+import Link from "next/link";
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
-import { Link } from "react-router-dom";
-import { ArrowUp, Facebook, Instagram, Mail, Miolica, Twitter } from "@/assets";
+import {
+  ArrowUp,
+  Facebook,
+  Instagram,
+  Mail,
+  Miolica,
+  Twitter,
+} from "@/components/atoms";
 
-export default function Footer(): JSX.Element {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function Footer() {
+  // eslint-disable-next-line no-unused-vars
   const [visible, setVisible] = useState<boolean>(false);
 
   const toggleVisible = (): void => {
@@ -27,11 +34,7 @@ export default function Footer(): JSX.Element {
 
   return (
     <footer className="footer bg-noise-pink p-5">
-      <Fade
-        cascade
-        triggerOnce
-        duration={1000}
-      >
+      <Fade cascade triggerOnce duration={1000}>
         <Miolica className="m-auto text-center" />
         <div className="lists-top flex h-screen w-full flex-col items-start justify-between border-b-2 border-custom-black-900 md:h-full md:flex-row md:py-5">
           <ul className="pb-3">
@@ -39,13 +42,13 @@ export default function Footer(): JSX.Element {
               <h1 className="font-bold">Explore Miolica</h1>
             </li>
             <li>
-              <Link to="/about">About Miolica</Link>
+              <Link href="/about">About Miolica</Link>
             </li>
             <li>
-              <Link to="/products">Shop</Link>
+              <Link href="/products">Shop</Link>
             </li>
             <li>
-              <Link to="/contacts">Contact us</Link>
+              <Link href="/contacts">Contact us</Link>
             </li>
           </ul>
           <ul className="pb-3">
@@ -53,7 +56,7 @@ export default function Footer(): JSX.Element {
               <h1 className="font-bold">Other resource</h1>
             </li>
             <li>
-              <Link to="products/categories">Categories</Link>
+              <Link href="products/categories">Categories</Link>
             </li>
             <li>
               <h4>Discount</h4>
@@ -67,7 +70,7 @@ export default function Footer(): JSX.Element {
               <h1 className="font-bold">Developers</h1>
             </li>
             <li>
-              <a href="https://docs.miolica.com/api">API Documentation</a>
+              <Link href="https://docs.miolica.com/api">API Documentation</Link>
             </li>
           </ul>
           <ul className="pb-3">
@@ -75,7 +78,7 @@ export default function Footer(): JSX.Element {
               <h1 className="font-bold">Get in touch</h1>
             </li>
             <li>
-              <Link to="/services">Help Center</Link>
+              <Link href="/services">Help Center</Link>
             </li>
           </ul>
           <ul className="pb-3">
@@ -96,24 +99,24 @@ export default function Footer(): JSX.Element {
             <li>
               <ul className="flex w-full items-center justify-around pt-2">
                 <li>
-                  <a href="https://instagram.com">
+                  <Link href="https://instagram.com">
                     <Instagram />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://facebook.com">
+                  <Link href="https://facebook.com">
                     <Facebook />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://twitter.com">
+                  <Link href="https://twitter.com">
                     <Twitter />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="mailto:miolica@store.com">
+                  <Link href="mailto:miolica@store.com">
                     <Mail />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>

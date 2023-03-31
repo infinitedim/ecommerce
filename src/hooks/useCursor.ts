@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCursorTypes } from "@/interfaces";
 import { useEffect } from "react";
 
-export function useCursor({ ref, onMouseMove }) {
+export function useCursor({ ref, onMouseMove }: useCursorTypes) {
   const mouseMove = (event) => {
     const { clientX, clientY } = event;
 

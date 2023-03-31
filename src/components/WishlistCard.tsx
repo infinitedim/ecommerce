@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { ReactComponent as ShoppingBag } from "../assets/ico/ic-shopping-bag.svg";
+import { ShopBag } from "@/components/atoms";
+import { ProductCardParameterTypes } from "@/interfaces";
 
+/**
+ * @param {ProductCardParameterTypes}
+ * @returns
+ * */
 export default function WishlistCard({
   isSkeleton = false,
   productName = "",
   productPrice = "",
   productImage = "",
-  id = "",
-}) {
-  const location = useLocation();
-
+  id,
+}: ProductCardParameterTypes) {
   // Skeleton for product card
   if (isSkeleton) {
     return (
@@ -34,11 +38,11 @@ export default function WishlistCard({
   return (
     <div className="min-w-[250px] p-4">
       <Link
-        to={location.pathname === "/" ? `products/${id}` : `${id}`}
+        href={`products/${id}`}
         id="product-card"
         className="group relative flex max-h-[350px] max-w-[250px] items-center justify-center overflow-hidden"
       >
-        <img
+        <Image
           src={productImage}
           alt={productName}
           className="lazyload h-[350px] w-full object-cover transition-all duration-200 group-hover:scale-105 group-hover:brightness-90"
@@ -48,10 +52,7 @@ export default function WishlistCard({
         id="product-card-detail"
         className="max-w-250 flex flex-col items-center justify-between gap-4 py-6"
       >
-        <Link
-          to={location.pathname === "/" ? `products/${id}` : `${id}`}
-          id="product-card"
-        >
+        <Link href={`products/${id}`} id="product-card">
           <h3 className="text-base font-semibold text-custom-black-900 line-clamp-1">
             {productName}
           </h3>
@@ -64,7 +65,7 @@ export default function WishlistCard({
             aria-label="cart-button"
           >
             <span className="text-custom-black-900">Add to shopping bag</span>
-            <ShoppingBag className="h-6 w-6 " />
+            <ShopBag className="h-6 w-6 " />
             <p className="tooltip-text-center group-hover:-bottom-[30px]">
               Add to shopping bag
             </p>
